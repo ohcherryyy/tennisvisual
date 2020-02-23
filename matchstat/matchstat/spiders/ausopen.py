@@ -9,19 +9,23 @@ class AusopenSpider(scrapy.Spider):
     name = 'ausopen'
     # allowed_domains = ['https://www.atptour.com/en/scores/archive/australian-open/580/2020/results']
     
-    start_urls=["https://www.atptour.com/en/scores/archive/australian-open/580/2020/results"
+    start_urls=["https://www.atptour.com/en/scores/archive/australian-open/580/2020/results",
     "https://www.atptour.com/en/scores/archive/australian-open/580/2019/results",
     "https://www.atptour.com/en/scores/archive/australian-open/580/2018/results",
     "https://www.atptour.com/en/scores/archive/australian-open/580/2017/results",
     "https://www.atptour.com/en/scores/archive/australian-open/580/2016/results",
-        "https://www.atptour.com/en/scores/archive/australian-open/580/2015/results"]
+        "https://www.atptour.com/en/scores/archive/australian-open/580/2015/results",
+        "https://www.atptour.com/en/scores/archive/australian-open/580/2014/results",
+        "https://www.atptour.com/en/scores/archive/australian-open/580/2013/results",
+        "https://www.atptour.com/en/scores/archive/australian-open/580/2012/results",
+        "https://www.atptour.com/en/scores/archive/australian-open/580/2011/results"]
 
     
     def parse(self, response):
         matchn=response.xpath('//*[@id="scoresResultsContent"]/div/table/thead/tr/th/text()').getall()
         y=response.xpath('//*[@id="scoresResultsContent"]/div/table/tbody').getall()
         year=str(response.xpath('//span[@class="tourney-dates"]/text()').get()).strip()
-        sq='INSERT INTO `matchstat`.`overall`(`winnerseed`, `winnername`, `loserseed`, `losername`, `score`, `round`,`year`,`id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) '
+        sq='INSERT INTO `matchstat`.`ausopen`(`winnerseed`, `winnername`, `loserseed`, `losername`, `score`, `round`,`year`,`id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) '
         if y is not None:
             with DB(db='matchstat') as db:
                 for tr in range(0,len(y)):
