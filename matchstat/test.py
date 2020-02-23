@@ -4,23 +4,30 @@ from scrapy.selector import Selector
 from scrapy.http import HtmlResponse
 
 if __name__ == "__main__":
-    with open('filename.html',encoding='utf-8') as body:
+    with open('completematchstat.html',encoding='utf-8') as body:
         text=body.read()
         response=Selector(text=text)
-        year=response.xpath('//span[@class="tourney-dates"]/text()').get()
-        print(year)
         
-        # matchn=response.xpath('//*[@id="scoresResultsContent"]/div/table/thead/tr/th/text()').getall()
-        # y=response.xpath('//*[@id="scoresResultsContent"]/div/table/tbody').getall()
-        # sq='INSERT INTO `matchstat`.`test`(`winnerseed`, `winnername`, `loserseed`, `losername`, `scores`, `match`) VALUES (%s,%s,%s,%s,%s,%s) '
-        # if y is not None:
-        #     with DB(db='matchstat') as db:
-        #         for tr in range(0,len(y)):
-        #             TR=Selector(text=y[tr]).xpath('//tr').getall()
-        #             scores=Selector(text=y[tr]).xpath('//tr/td[@class="day-table-score"]/a').getall()              
-        #             for td in range(0,len(scores)):
-        #                 winners=Selector(text=TR[td]).xpath('//td[@class="day-table-seed"]').getall()          
-        #                 winnern=Selector(text=TR[td]).xpath('//td[@class="day-table-name"]/a/text()').getall()                  
-        #                 db.execute(sq,(winners[0],winnern[0],winners[1],winnern[1],scores[td],matchn[tr]))
+        statcatg=response.xpath('//*[@id="completedMatchStats"]/table/tr/th/text()').getall()
+        statname=response.xpath('//*[@id="completedMatchStats"]/table/tr[@class="match-stats-row percent-on"]').getall()
+        for tr in range(0,len(statname)):
+            x=Selector(text=statname[tr]).xpath('//td[@class="match-stats-number-left"]/span/a/text()').get()
+            if x is None:
+                loser=(Selector(text=statname[tr]).xpath('//td[@class="match-stats-number-right"]/span/text()').get()).strip()
+                winner=(Selector(text=statname[tr]).xpath('//td[@class="match-stats-number-left"]/span/text()').get()).strip()
+                statnames=(Selector(text=statname[tr]).xpath('//td[@class="match-stats-label"]/text()').get()).strip()
+                y=Selector(text=statname[tr]).xpath('//td[@class="match-stats-number-left"]/span[@class="stat-breakdown"]/text()').get()
+                z=Selector(text=statname[tr]).xpath('//td[@class="match-stats-number-right"]/span[@class="stat-breakdown"]/text()').get()
+                if z is not None:
+                    loser=loser+z.strip()
+                if y is not None:
+                    winner=winner+y.strip()
+                if (tr<8) and (tr>0):
+                    print(statcatg[0].strip(),loser,winner,statnames)
+                if (tr>7) and (tr<13):
+                    print(statcatg[1].strip(),loser,winner,statnames)
+                if (tr>12):
+                    print(statcatg[2].strip(),loser,winner,statnames)
+        
                     
                     

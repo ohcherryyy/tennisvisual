@@ -9,7 +9,7 @@ class AusopenSpider(scrapy.Spider):
     name = 'ausopen'
     # allowed_domains = ['https://www.atptour.com/en/scores/archive/australian-open/580/2020/results']
     
-    start_urls=["https://www.atptour.com/en/scores/archive/australian-open/580/2020/results",
+    start_urls=["https://www.atptour.com/en/scores/archive/australian-open/580/2020/results"
     "https://www.atptour.com/en/scores/archive/australian-open/580/2019/results",
     "https://www.atptour.com/en/scores/archive/australian-open/580/2018/results",
     "https://www.atptour.com/en/scores/archive/australian-open/580/2017/results",
