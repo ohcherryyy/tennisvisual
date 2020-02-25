@@ -7,7 +7,7 @@ def geturl():
     urlsId=[]
     x="https://www.atptour.com"
     with DB(db='matchstat') as db:
-        db.execute("SELECT `score`,`id` FROM `matchstat`.`ausopen`")
+        db.execute("SELECT `score`,`id` FROM `matchstat`.`wimbledon`")
         result=db.fetchall()
         for row in result:
             resp=Selector(text=row[0])
@@ -15,7 +15,7 @@ def geturl():
             if resp.xpath("//a/@href").get() is not None:
                 new=(x+resp.xpath("//a/@href").get(),row[1])
             else:
-                db.execute('INSERT INTO `matchstat`.`ausopenmatchstat`(`id`, `statcateg`,`statslabel`,`winner`,`loser`) VALUES (%s,%s,%s,%s,%s)',(row[1],"W/O","W/O","W/O","W/O"))
+                db.execute('INSERT INTO `matchstat`.`wmatchstat`(`id`, `statcateg`,`statslabel`,`winner`,`loser`) VALUES (%s,%s,%s,%s,%s)',(row[1],"W/O","W/O","W/O","W/O"))
             urlsId.append(new)
         # print(urlsId)
     return urlsId
