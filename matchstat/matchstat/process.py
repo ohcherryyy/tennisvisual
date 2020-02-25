@@ -21,7 +21,7 @@ def process(org):
 
 if __name__ == "__main__":
     with DB(db='matchstat') as db:
-        db.execute("SELECT `winnerseed`,`loserseed`,`id`,`score` FROM `matchstat`.`ausopen`")
+        db.execute("SELECT `winnerseed-mod`,`loserseed-mod`,`id`,`score` FROM `matchstat`.`wimbledon`")
         result=db.fetchall()
         org=[]
         for row in result:
@@ -30,18 +30,18 @@ if __name__ == "__main__":
             mod=resp.re("\((\w+)\)")
             modl=loser.re("\((\w+)\)")
             if len(mod) >= 1:
-                db.execute('UPDATE `matchstat`.`ausopen` SET `winnerseed-mod` = %s where `id`=%s',(mod[0],row[2]))           
+                db.execute('UPDATE `matchstat`.`wimbledon` SET `winnerseed` = %s where `id`=%s',(mod[0],row[2]))           
             else:
-                db.execute('UPDATE `matchstat`.`ausopen` SET `winnerseed-mod` = %s where `id`=%s', ("nonseed",row[2]))
+                db.execute('UPDATE `matchstat`.`wimbledon` SET `winnerseed` = %s where `id`=%s', ("nonseed",row[2]))
             if len(modl) >= 1:
-                db.execute('UPDATE `matchstat`.`ausopen` SET `loserseed-mod` = %s where `id`=%s',(modl[0],row[2]))           
+                db.execute('UPDATE `matchstat`.`wimbledon` SET `loserseed` = %s where `id`=%s',(modl[0],row[2]))           
             else:
-                db.execute('UPDATE `matchstat`.`ausopen` SET `loserseed-mod` = %s where `id`=%s', ("nonseed",row[2]))
+                db.execute('UPDATE `matchstat`.`wimbledon` SET `loserseed` = %s where `id`=%s', ("nonseed",row[2]))
 
             sc=re.sub('</sup>',')',re.sub('<sup>','(',re.sub('<a.*?>|<!.*?>|</a>','',str(row[3]).strip())))
             t=process(sc)  
             # print(t)      
-            db.execute('UPDATE `matchstat`.`ausopen` SET `1 set` = %s, `2 set` = %s,`3 set` = %s,`4 set` = %s,`5 set` = %s where `id`=%s',(t[0],t[1],t[2],t[3],t[4],row[2]))
+            db.execute('UPDATE `matchstat`.`wimbledon` SET `1 set` = %s, `2 set` = %s,`3 set` = %s,`4 set` = %s,`5 set` = %s where `id`=%s',(t[0],t[1],t[2],t[3],t[4],row[2]))
             
 
             
