@@ -20,5 +20,18 @@ def geturl():
         # print(urlsId)
     return urlsId
 
+def h2hurl():
+    urlsID=[]
+    x="https://www.atptour.com"
+    with DB(db='matchstat') as db:
+        db.execute("SELECT `h2hurl` FROM `matchstat`.`ausopen`")
+        result=db.fetchall()
+        for row in result:
+            new=(x+row[0],row[0])
+            urlsID.append(new)
+        # print(urlsID)
+    return urlsID
+
 if __name__ == "__main__":
-    geturl()
+    # geturl()
+    h2hurl()
