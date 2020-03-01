@@ -25,14 +25,15 @@ class FranceSpider(scrapy.Spider):
         matchn=response.xpath('//*[@id="scoresResultsContent"]/div/table/thead/tr/th/text()').getall()
         y=response.xpath('//*[@id="scoresResultsContent"]/div/table/tbody').getall()
         year=response.xpath('//span[@class="tourney-dates"]/text()').get()
-        sq='INSERT INTO `matchstat`.`Wimbledon`(`winnerseed`, `winnername`, `loserseed`, `losername`, `score`, `round`,`year`,`id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) '
+        sq='INSERT INTO `matchstat`.`wimbledon`(`winnerseed-mod`, `winnername`, `loserseed-mod`, `losername`, `score`, `round`,`year`,`id`,`h2hurl`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) '
         if y is not None:
             with DB(db='matchstat') as db:
                 for tr in range(0,len(y)):
                     TR=Selector(text=y[tr]).xpath('//tr').getall()
-                    scores=Selector(text=y[tr]).xpath('//tr/td[@class="day-table-score"]/a').getall()              
+                    scores=Selector(text=y[tr]).xpath('//tr/td[@class="day-table-score"]/a').getall()  
+                    href=Selector(text=y[tr]).xpath('//tr/td[@class="day-table-button"]/a/@href').getall()             
                     for td in range(0,len(scores)):
                         winners=Selector(text=TR[td]).xpath('//td[@class="day-table-seed"]').getall()          
                         winnern=Selector(text=TR[td]).xpath('//td[@class="day-table-name"]/a/text()').getall()                  
-                        db.execute(sq,(winners[0],winnern[0],winners[1],winnern[1],scores[td],matchn[tr],year.strip(),0))
+                        db.execute(sq,(winners[0],winnern[0],winners[1],winnern[1],scores[td],matchn[tr],year.strip(),0,href[td]))
             

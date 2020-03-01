@@ -24,7 +24,7 @@ def h2hurl():
     urlsID=[]
     x="https://www.atptour.com"
     with DB(db='matchstat') as db:
-        db.execute("SELECT `h2hurl` FROM `matchstat`.`ausopen`")
+        db.execute("SELECT `h2hurl` FROM `matchstat`.`wimbledon`")
         result=db.fetchall()
         for row in result:
             new=(x+row[0],row[0])
