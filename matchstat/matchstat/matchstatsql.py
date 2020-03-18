@@ -7,7 +7,7 @@ def geturl():
     urlsId=[]
     x="https://www.atptour.com"
     with DB(db='matchstat') as db:
-        db.execute("SELECT `score`,`id` FROM `matchstat`.`wimbledon`")
+        db.execute("SELECT `score`,`id` FROM `matchstat`.`ny`")
         result=db.fetchall()
         for row in result:
             resp=Selector(text=row[0])

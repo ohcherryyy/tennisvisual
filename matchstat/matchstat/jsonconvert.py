@@ -3,7 +3,7 @@ import json
 
 if __name__ == "__main__":
     with DB(db='matchstat') as db:
-        db.execute("SELECT * FROM `matchstat`.`h2h`")
+        db.execute("SELECT * FROM `matchstat`.`imgofsportsman`")
         result=db.fetchall()
         fields=db.description
         
@@ -11,7 +11,7 @@ if __name__ == "__main__":
         for i in fields:   
             column_list.append(i[0])
         
-        with open('matchstat/matchstat/json/h2h.json','w+') as f:
+        with open('matchstat/json/img.json','w+') as f:
             for row in result:
                 data={}
                 for i in range(len(column_list)):
