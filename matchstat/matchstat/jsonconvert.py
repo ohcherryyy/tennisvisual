@@ -1,9 +1,10 @@
+#-*-coding:utf-8-*-
 from database import DB
 import json
 
 if __name__ == "__main__":
     with DB(db='matchstat') as db:
-        db.execute("SELECT * FROM `matchstat`.`imgofsportsman`")
+        db.execute("SELECT * FROM `matchstat`.`2020ausopenlinks`")
         result=db.fetchall()
         fields=db.description
         
@@ -11,7 +12,7 @@ if __name__ == "__main__":
         for i in fields:   
             column_list.append(i[0])
         
-        with open('matchstat/json/img.json','w+') as f:
+        with open('matchstat/json/2020ausopenlinks.json','w+',encoding='utf-8') as f:
             for row in result:
                 data={}
                 for i in range(len(column_list)):
