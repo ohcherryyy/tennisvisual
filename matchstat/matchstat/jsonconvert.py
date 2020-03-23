@@ -16,7 +16,7 @@ if __name__ == "__main__":
             for row in result:
                 data={}
                 for i in range(len(column_list)):
-                    data[column_list[i]]=str(row[i])
+                    data[column_list[i]]=str(row[i]).strip()
                 jsondata=json.dumps(data,ensure_ascii=False)
-                f.write(jsondata+'\n')
+                f.write(jsondata+',\n')
         f.close()

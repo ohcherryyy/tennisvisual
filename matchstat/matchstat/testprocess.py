@@ -27,28 +27,28 @@ if __name__ == "__main__":
         db.execute("SELECT `winnername`,`round` FROM `matchstat`.`ausopen` WHERE `year`='2020.01.20 - 2020.02.03' ")
         result=db.fetchall()
         
-        db.execute("SELECT `losername` FROM `matchstat`.`ausopen` WHERE `round`='Round of 128'")
+        db.execute("SELECT `losername` FROM `matchstat`.`ausopen` WHERE `round`='Round of 128' and `year`='2020.01.20 - 2020.02.03'")
         loser=db.fetchall()
         
-        sq="INSERT IGNORE INTO `matchstat`.`2020ausopen`(`category`,`name`,`symbolSize`,`symbol`) VALUES(%s,%s,%s,%s)"
+        sq="INSERT IGNORE INTO `matchstat`.`2020ausopen`(`category`,`name`,`symbolSize`,`symbol`,`value`) VALUES(%s,%s,%s,%s,%s)"
         for x in range(0,len(result)):
             db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(result[x][0],))
             img=db.fetchall()
             if(result[x][1]=="Final"):
-                db.execute(sq,(0,result[x][0],150,img[0][0]))
+                db.execute(sq,(0,result[x][0],150,"image://http://"+img[0][0],50))
             if(result[x][1]=="Semifinals"):
-                db.execute(sq,(1,result[x][0],130,img[0][0]))
+                db.execute(sq,(1,result[x][0],130,"image://http://"+img[0][0],40))
             if(result[x][1]=="Quarterfinals"):
-                db.execute(sq,(2,result[x][0],110,img[0][0]))
+                db.execute(sq,(2,result[x][0],110,"image://http://"+img[0][0],30))
             if(result[x][1]=="Round of 16"):
-                db.execute(sq,(3,result[x][0],90,img[0][0]))
+                db.execute(sq,(3,result[x][0],90,"image://http://"+img[0][0],25))
             if(result[x][1]=="Round of 32"):
-                db.execute(sq,(4,result[x][0],70,img[0][0]))
+                db.execute(sq,(4,result[x][0],70,"image://http://"+img[0][0],20))
             if(result[x][1]=="Round of 64"):
-                db.execute(sq,(5,result[x][0],50,img[0][0]))
+                db.execute(sq,(5,result[x][0],50,"image://http://"+img[0][0],15))
             if(result[x][1]=="Round of 128"):
-                db.execute(sq,(6,result[x][0],30,img[0][0]))
+                db.execute(sq,(6,result[x][0],30,"image://http://"+img[0][0],10))
         for y in range(0,len(loser)):
             db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(loser[y][0],))
             img=db.fetchall()
-            db.execute(sq,(7,loser[y][0],10,img[0][0]))    
+            db.execute(sq,(7,loser[y][0],10,"image://http://"+img[0][0],5))    
