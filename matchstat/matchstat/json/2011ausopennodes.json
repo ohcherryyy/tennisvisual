@@ -1,0 +1,896 @@
+{
+    "category": "6",
+    "name": "Adrian Mannarino",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/mannarino_head_ao19.png",
+    "value": "10"
+},
+{
+    "category": "6",
+    "name": "Albert Montanes",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/montanes_albert_head19.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Alejandro Falla",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/falla-atpwt-headshot-template.png",
+    "value": "5"
+},
+{
+    "category": "3",
+    "name": "Alexandr Dolgopolov",
+    "symbolSize": "110",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/dolgopolov_head_ao18.png",
+    "value": "25"
+},
+{
+    "category": "6",
+    "name": "Andreas Seppi",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2016/seppi_head_16.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Andrey Golubev",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/golubev-a_headshot_getty14.png",
+    "value": "5"
+},
+{
+    "category": "1",
+    "name": "Andy Murray",
+    "symbolSize": "150",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/murray_head_castore_pp19.png",
+    "value": "40"
+},
+{
+    "category": "4",
+    "name": "Andy Roddick",
+    "symbolSize": "90",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/roddick-headshot-getty.png",
+    "value": "20"
+},
+{
+    "category": "7",
+    "name": "Arnaud Clement",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/arnaud_clement_2016.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Benjamin Becker",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/vibrant/becker-headshot15.png",
+    "value": "10"
+},
+{
+    "category": "6",
+    "name": "Benoit Paire",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/paire_head_ao18.png",
+    "value": "10"
+},
+{
+    "category": "5",
+    "name": "Bernard Tomic",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2016/tomic_head_16.png",
+    "value": "15"
+},
+{
+    "category": "7",
+    "name": "Bjorn Phau",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/phau_b_headshot_lq.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Blaz Kavcic",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/kavcic-b_headshot_lq15.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Brian Dabul",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2016/dabul-headshot-pp16.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Carlos Berlocq",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/berlocq-headshot_14.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Carsten Ball",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/ghost-headshot.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Daniel Brands",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/brands-atpwt-headshot-template.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Daniel Gimeno-Traver",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2016/gimenot_head_16.png",
+    "value": "5"
+},
+{
+    "category": "2",
+    "name": "David Ferrer",
+    "symbolSize": "130",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/ferrer_head_ao18.png",
+    "value": "30"
+},
+{
+    "category": "6",
+    "name": "David Nalbandian",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/nalbanian_d_headshot_lq.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Denis Gremelmayr",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/ghost-headshot.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Denis Istomin",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/istomin_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Dmitry Tursunov",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/tursunov-atpwt-headshot-template.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Donald Young",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2016/young_head_16.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Dudi Sela",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/sela-headshot-getty15.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Dustin Brown",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/brown_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Eduardo Schwank",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/ghost-headshot.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Ernests Gulbis",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/vibrant/gulbis-headshot15.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Fabio Fognini",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/fognini_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Feliciano Lopez",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/lopez_f_head_ao19.png",
+    "value": "10"
+},
+{
+    "category": "4",
+    "name": "Fernando Verdasco",
+    "symbolSize": "90",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/verdasco_head_ao18.png",
+    "value": "20"
+},
+{
+    "category": "7",
+    "name": "Filippo Volandri",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/volandri-f_headshot_getty14.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Flavio Cipolla",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/cipolla-f_headshot_getty.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Florent Serra",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/serra-f_headshot_getty.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Florian Mayer",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/mayer_head_ao18.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Frank Dancevic",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/dancevic_head_pp18.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Fred Gil",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/gil-f_headshot_lq09.png",
+    "value": "10"
+},
+{
+    "category": "5",
+    "name": "Gael Monfils",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/monfils_head_ao19.png",
+    "value": "15"
+},
+{
+    "category": "6",
+    "name": "Gilles Muller",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2017/muller_headao17.png",
+    "value": "10"
+},
+{
+    "category": "6",
+    "name": "Gilles Simon",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/simon_head_ao19.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Grega Zemlja",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/zemlja-g_headshot_lq10.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Grigor Dimitrov",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/dimitrov_head_ao19.png",
+    "value": "10"
+},
+{
+    "category": "5",
+    "name": "Guillermo Garcia-Lopez",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/garcia_lopez_head_ao18.png",
+    "value": "15"
+},
+{
+    "category": "6",
+    "name": "Igor Andreev",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/andreev_i_headshot_lq.png",
+    "value": "10"
+},
+{
+    "category": "6",
+    "name": "Igor Kunitsyn",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/kunitsyn_i_headshot_lq.png",
+    "value": "10"
+},
+{
+    "category": "6",
+    "name": "Illya Marchenko",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2016/marchenko_head_16.png",
+    "value": "10"
+},
+{
+    "category": "6",
+    "name": "Ivan Dodig",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/dodig_head_ao18.png",
+    "value": "10"
+},
+{
+    "category": "5",
+    "name": "Ivan Ljubicic",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/ljubicic_i_headshot_lq.png",
+    "value": "15"
+},
+{
+    "category": "7",
+    "name": "Ivo Karlovic",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/karlovic_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Jan Hajek",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/hajek_j_headshot_lq.png",
+    "value": "5"
+},
+{
+    "category": "5",
+    "name": "Jan Hernych",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/hernych-j_headshot_getty09.png",
+    "value": "15"
+},
+{
+    "category": "6",
+    "name": "Janko Tipsarevic",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/tipsarevic_head_ao19.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Jarkko Nieminen",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/nieminen-headshot_14.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Jeremy Chardy",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/chardy_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "5",
+    "name": "Jo-Wilfried Tsonga",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/tsonga_head_ao19.png",
+    "value": "15"
+},
+{
+    "category": "5",
+    "name": "John Isner",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/isner_head_ao19.png",
+    "value": "15"
+},
+{
+    "category": "7",
+    "name": "Juan Ignacio Chela",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/chela-juan_ignacio.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Juan Martin del Potro",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/delpotro_head_rome19.png",
+    "value": "10"
+},
+{
+    "category": "6",
+    "name": "Juan Monaco",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/vibrant/monaco-headshot15.png",
+    "value": "10"
+},
+{
+    "category": "4",
+    "name": "Jurgen Melzer",
+    "symbolSize": "90",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2017/melzerj_headao17.png",
+    "value": "20"
+},
+{
+    "category": "7",
+    "name": "Karol Beck",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/ghost-headshot.png",
+    "value": "5"
+},
+{
+    "category": "5",
+    "name": "Kei Nishikori",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/nishikori_head_ao19.png",
+    "value": "15"
+},
+{
+    "category": "7",
+    "name": "Kevin Anderson",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/anderson_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Leonardo Mayer",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2016/mayer_head_16.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Lleyton Hewitt",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/hewitt-atpwt-headshot-template.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Lukas Lacko",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/lacko_headshot-getty12.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Lukasz Kubot",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/kubot_head_ao19.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Marcel Granollers",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2017/granollers_headao17.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Marco Crugnola",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/ghost-headshot.png",
+    "value": "5"
+},
+{
+    "category": "5",
+    "name": "Marcos Baghdatis",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2017/baghdatis_headao17.png",
+    "value": "15"
+},
+{
+    "category": "7",
+    "name": "Marcos Daniel",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/ghost-headshot.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Mardy Fish",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/fish-headshot-getty-tiny.png",
+    "value": "10"
+},
+{
+    "category": "4",
+    "name": "Marin Cilic",
+    "symbolSize": "90",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/cilic_head_ao19.png",
+    "value": "20"
+},
+{
+    "category": "7",
+    "name": "Marinko Matosevic",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/matosevic-headshot-getty13.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Marsel Ilhan",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/ilhan-headshot-getty15.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Matthew Ebden",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/ebden_full_ao19.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Michael Berrer",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/berrer-m_headshot_getty12.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Michael Llodra",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/llodra-m_headshot_getty13.png",
+    "value": "10"
+},
+{
+    "category": "6",
+    "name": "Michael Russell",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/russel-m_headshot_getty10.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Michal Przysiezny",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/przysiezny-m_headshot_getty14.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Mikhail Kukushkin",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/kukushkin_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "5",
+    "name": "Mikhail Youzhny",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/vibrant/youzhny-headshot15.png",
+    "value": "15"
+},
+{
+    "category": "4",
+    "name": "Milos Raonic",
+    "symbolSize": "90",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/raonic_head_ao19.png",
+    "value": "20"
+},
+{
+    "category": "7",
+    "name": "Mischa Zverev",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/zverev_m_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "4",
+    "name": "Nicolas Almagro",
+    "symbolSize": "90",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2017/almagro_headao17.png",
+    "value": "20"
+},
+{
+    "category": "6",
+    "name": "Nicolas Mahut",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/mahut_head_ao19.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Nikolay Davydenko",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/davydenko-headshot-getty-tiny.png",
+    "value": "5"
+},
+{
+    "category": "0",
+    "name": "Novak Djokovic",
+    "symbolSize": "180",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/djokovic_head_ao19.png",
+    "value": "50"
+},
+{
+    "category": "7",
+    "name": "Pablo Andujar",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/andujar_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Pablo Cuevas",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/cuevas_head_ao18.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Pere Riba",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/riba-p_headshot_lq10.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Peter Luczak",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/ghost-headshot.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Philipp Kohlschreiber",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/kohlschreiber_head_ao19.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Philipp Petzschner",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/petzchner-p_headshot_getty11.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Potito Starace",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/starace-p_headshot_getty12.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Radek Stepanek",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2017/stepanek-headshot-template.png",
+    "value": "10"
+},
+{
+    "category": "3",
+    "name": "Rafael Nadal",
+    "symbolSize": "110",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/nadal_head_ao19.png",
+    "value": "25"
+},
+{
+    "category": "7",
+    "name": "Rainer Schuettler",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/schuettler_r_headshot_lq.png",
+    "value": "5"
+},
+{
+    "category": "5",
+    "name": "Ricardas Berankis",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2016/berankis_head_16.png",
+    "value": "15"
+},
+{
+    "category": "7",
+    "name": "Ricardo Mello",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/ghost-headshot.png",
+    "value": "5"
+},
+{
+    "category": "5",
+    "name": "Richard Gasquet",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/gasquet_head_ao18.png",
+    "value": "15"
+},
+{
+    "category": "5",
+    "name": "Robin Haase",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/haase_head_ao19.png",
+    "value": "15"
+},
+{
+    "category": "4",
+    "name": "Robin Soderling",
+    "symbolSize": "90",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/compressed/soderling-headshot-getty-tiny.png",
+    "value": "20"
+},
+{
+    "category": "2",
+    "name": "Roger Federer",
+    "symbolSize": "130",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/federer_head_ao19.png",
+    "value": "30"
+},
+{
+    "category": "7",
+    "name": "Ruben Ramirez Hidalgo",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/ramirezhidalgo-r_headshot_getty09.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Rui Machado",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/machado-r_headshot_getty09.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Ryan Harrison",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/harrison_head_ao18.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Ryan Sweeting",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/sweeting-r_headshot_lq11.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Sam Querrey",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/querrey_head_ao19.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Santiago Giraldo",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2017/giraldo_headao17.png",
+    "value": "10"
+},
+{
+    "category": "5",
+    "name": "Sergiy Stakhovsky",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/stakhovsky_head_ao19.png",
+    "value": "15"
+},
+{
+    "category": "7",
+    "name": "Simon Greul",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/retired/greul_s_headshot_lq.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Simon Stadler",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/stadler-s_headshot_lq09.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Somdev Devvarman",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/devvarman-atpwt-headshot-template.png",
+    "value": "5"
+},
+{
+    "category": "3",
+    "name": "Stan Wawrinka",
+    "symbolSize": "110",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/wawrinka_head_ao19.png",
+    "value": "25"
+},
+{
+    "category": "7",
+    "name": "Stephane Robert",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/robert-s_headshot_lq10.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Teymuraz Gabashvili",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/gabashvili_head_pp19.png",
+    "value": "5"
+},
+{
+    "category": "7",
+    "name": "Thiemo de Bakker",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/debakker-t_headshot_getty11.png",
+    "value": "5"
+},
+{
+    "category": "6",
+    "name": "Thomaz Bellucci",
+    "symbolSize": "50",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/bellucci_head_pp19.png",
+    "value": "10"
+},
+{
+    "category": "7",
+    "name": "Tobias Kamke",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/kamke_tobias_head19.png",
+    "value": "5"
+},
+{
+    "category": "3",
+    "name": "Tomas Berdych",
+    "symbolSize": "110",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2019/berdych_head_ao19.png",
+    "value": "25"
+},
+{
+    "category": "4",
+    "name": "Tommy Robredo",
+    "symbolSize": "90",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/vibrant/robredo-headshot15.png",
+    "value": "20"
+},
+{
+    "category": "7",
+    "name": "Victor Hanescu",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/hanescu-v_headshot_getty11.png",
+    "value": "5"
+},
+{
+    "category": "5",
+    "name": "Viktor Troicki",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/troicki_head_ao18.png",
+    "value": "15"
+},
+{
+    "category": "7",
+    "name": "Vincent Millot",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/lq/active/millot-v_headshot_getty13.png",
+    "value": "5"
+},
+{
+    "category": "5",
+    "name": "Xavier Malisse",
+    "symbolSize": "70",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/malisse-atpwt-headshot-template.png",
+    "value": "15"
+},
+{
+    "category": "7",
+    "name": "Yen-Hsun Lu",
+    "symbolSize": "30",
+    "symbol": "image://http://www.atptour.com/-/media/tennis/players/head-shot/2018/lu_head_ao18.png",
+    "value": "5"
+},
