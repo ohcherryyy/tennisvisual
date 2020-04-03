@@ -16704,7 +16704,12 @@
         // myChart.showLoading({ text: '正在加载数据' });   
         option=getOption(nodes,links,categoriesname);
         myChart.setOption(option)
-        myChart.on
+        myChart.on('Click',{dataType:'edge'},function(params){
+            var statid=params.data.id;
+            var winner=params.data.target;
+            var loser=params.data.source;
+            location.href="stat.html?"+"&txt="+encodeURI(statid)+"&winner="+encodeURI(winner)+"&loser="+encodeURI(loser);
+        })
         window.onresize=function(){
             myChart.resize();
         }
