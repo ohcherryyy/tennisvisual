@@ -2,8 +2,6 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>ECharts</title>
-    <!-- 引入 echarts.js -->
     
     <title>list</title>
     <style>
@@ -12,20 +10,98 @@
             width:100%;
             height:100%;
         }
+        #header{
+            top:100px;
+            width:document.body.clientWidth;
+            height:400px;
+            margin:0px auto;
+            border:0px solid #000;
+            overflow:hidden;            
+        }
+        #sportsleft,#sportsright{
+            width:300px;
+            height:400px;
+            border:0px solid #000;
+            display:inline-block;
+            padding:2px;
+        }
+        #middle{
+            width:900px;
+            height:400px;
+            display:inline-block
+        }
+        #sheet{
+            width:900px;
+            height:150px;
+            display:block
+            padding:2px;
+        }
         #main {
-              width:1000px;
-              height:400px;             
+              width:900px;
+              height:250px;
               margin: 0px auto;
-              border: 5 px solid #ddd;
-              
+              border: 0px solid #000;
+              display:block;
+              padding:2px;
           }
+        #footer{
+            width:1580px;
+            height:350px;
+            margin:0px auto;
+            padding:5px;
+        }
+        #service{
+            width:48%;
+            height:100%;
+            display:inline-block;
+            padding:2px;
+        }
+        #return{
+            width:48%;
+            height:100%;
+            display:inline-block;
+            padding:2px;
+        }
+        #servicetotal,#returntotal{
+            width:100%;
+            height:50%;
+            display:block;
+        }
+        #breakpointsl,#breakpointsr{
+            width:100%;
+            height:40%;
+            display:block;
+        }
+        
     </style>
 </head>
 <body>
     <script src="echarts/incubator-echarts-4.6.0/dist/echarts.js"></script>
     <script src="jquery-1.11.3.min.js"></script>
     <script src="visualization/statcreate.js"></script>
-    <div id="main"></div>
+    <div id="header" align="center">
+        <div id="sportsleft" align="left">
+            <!-- <img id="img" width="100"/> -->
+        left</div>
+        <div id="middle" align="center">
+            <div id="sheet">sheet</div>
+            <div id="main"></div>
+        </div>      
+        <div id="sportsright" align="right">right</div>
+    </div>
+    <div id="footer">
+        <div id="service" align="center">
+            <span text-align:"center">发球数据</span>
+            <div id="servicetotal" align="center"></div>
+            <div id="breakpointsl" align="center"></div>
+        </div>        
+        <div id="return" align="center">
+            <span text-align:"center">接发球数据</span>
+            <div id="returntotal" align="center"></div>
+            <div id="breakpointsr" align="center"></div>
+        </div>
+    </div>
+    
     <script type="text/javascript">
     var statdata=[
     {"id": "8", "statcateg": "Service Stats", "statslabel": "Aces", "winner": "8", "loser": "11", "wstat": "None", "lstat": "None", "wactual": "None", "lactual": "None", "wbase": "None", "lbase": "None"},
@@ -4355,17 +4431,42 @@
 {"id": "313", "statcateg": "Point Stats", "statslabel": "Return Points Won", "winner": "42%(44/105)", "loser": "36%(36/99)", "wstat": "42", "lstat": "36", "wactual": "44", "lactual": "36", "wbase": "105", "lbase": "99"},
 
     ]
+    
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.href.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
+    function urlconvert(img){
+        var url=img.replace(/image:\/\//i,'')
+        return url
+    }
     
-    var myChart = echarts.init(document.getElementById('main'));    
+    // document.getElementById('img').src=urlconvert(getQueryString("winnerimg"))
+    var radar = echarts.init(document.getElementById('main'));    
     option=creategraph(statdata,getQueryString("txt"),getQueryString("winner"),getQueryString("loser"))
-    myChart.setOption(option)
+    radar.setOption(option)
+
+    var bar = echarts.init(document.getElementById('servicetotal')); 
+    baroption=servicecreate(statdata,getQueryString("txt"),getQueryString("winner"),getQueryString("loser"))
+    bar.setOption(baroption)
+
+    var barr = echarts.init(document.getElementById('returntotal')); 
+    barroption=returncreate(statdata,getQueryString("txt"),getQueryString("winner"),getQueryString("loser"))
+    barr.setOption(barroption)
+
+    var pies = echarts.init(document.getElementById('breakpointsl')); 
+    piesoption=breakpointscreate(statdata,getQueryString("txt"),getQueryString("winner"),getQueryString("loser"))
+    pies.setOption(piesoption)
+
+    var pier = echarts.init(document.getElementById('breakpointsr')); 
+    pieroption=breakpointrcreate(statdata,getQueryString("txt"),getQueryString("winner"),getQueryString("loser"))
+    pier.setOption(pieroption)
+
     window.onresize=function(){
-        myChart.resize();
+        radar.resize();
+        bar.resize();
+        barr.resize();
     }
 
     </script>

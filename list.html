@@ -13,7 +13,7 @@
             height:100%;
         }
         #main {
-              width:1600px;
+              width:1587px;
               height:730px;             
               margin: 0px auto;
               border: 5 px solid #ddd;
@@ -16698,21 +16698,38 @@
         {
             name:'128强',
         }]
-    var year=['2020','2019','2018','2017','2016','2015','2014','2013','2012','2011']
-        // var nodes=nodes2019.concat(nodes2020);
-        var myChart = echarts.init(document.getElementById('main'));
-        // myChart.showLoading({ text: '正在加载数据' });   
-        option=getOption(nodes,links,categoriesname);
-        myChart.setOption(option)
-        myChart.on('Click',{dataType:'edge'},function(params){
-            var statid=params.data.id;
-            var winner=params.data.target;
-            var loser=params.data.source;
-            location.href="stat.html?"+"&txt="+encodeURI(statid)+"&winner="+encodeURI(winner)+"&loser="+encodeURI(loser);
-        })
-        window.onresize=function(){
-            myChart.resize();
+        
+    var myChart = echarts.init(document.getElementById('main'));        
+    option=getOption(nodes,links,categoriesname);
+    myChart.setOption(option)
+    
+    function getURL(winner,loser){
+        var img=[]
+        for(var i=0;i<nodes.length;i++){
+            for(var j=0;j<nodes[i].length;j++){
+                if(nodes[i][j].name==winner)
+                {
+                    img['winner']=nodes[i][j].symbol
+                }
+                else if (nodes[i][j].name==loser)
+                {
+                    img['loser']=nodes[i][j].symbol
+                }
+            }
         }
+        return img
+    }
+
+    myChart.on('Click',{dataType:'edge'},function(params){
+        var statid=params.data.id;
+        var winner=params.data.target;
+        var loser=params.data.source;
+        img=getURL(winner,loser)       
+        location.href="stat.html?"+"&txt="+encodeURI(statid)+"&winner="+encodeURI(winner)+"&loser="+encodeURI(loser)+"&winnerimg="+encodeURI(img['winner'])+"&loserimg="+encodeURI(img['loser']);
+    })
+    window.onresize=function(){
+        myChart.resize();
+    }
 
     </script>
 </body>
