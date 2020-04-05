@@ -76,6 +76,10 @@ function creategraph(statdata,id,winnername,losername){
     winlossf.push(losef)
 
     option={
+        title:{
+            text:'制胜分与失误表现',
+            left:'auto'
+        },
         legend:{
             data:[winnername,losername]
         },
@@ -92,7 +96,7 @@ function creategraph(statdata,id,winnername,losername){
                 {text:'破发成功率(%)',max:100},
             ],
             center:['25%','50%'],
-            radius:90
+            radius:80
         },
         {
             indicator:[
@@ -102,7 +106,7 @@ function creategraph(statdata,id,winnername,losername){
                 {text:'被破发率(%)',max:100},
             ],
             center:['75%','50%'],
-            radius:80
+            radius:70
         }
 
     ],
@@ -163,6 +167,10 @@ function servicecreate(statdata,id,winnername,losername){
     }
     
     option = {
+        title:{
+            text:'发球表现',
+            left:'auto'
+        },
         tooltip: {
             trigger: 'axis',
             axisPointer: {            
@@ -262,6 +270,10 @@ function returncreate(statdata,id,winnername,losername){
     }
     
     option = {
+        title:{
+            text:'接发球表现',
+            left:'auto'
+        },
         tooltip: {
             trigger: 'axis',
             axisPointer: {            

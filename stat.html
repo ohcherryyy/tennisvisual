@@ -5,7 +5,7 @@
     
     <title>list</title>
     <style>
-        *{margin:0;padding:0}
+        *{margin:0;padding:2}
         html,body{
             width:100%;
             height:100%;
@@ -16,63 +16,101 @@
             height:400px;
             margin:0px auto;
             border:0px solid #000;
-            overflow:hidden;            
+            overflow:hidden; 
+            vertical-align:middle           
         }
         #sportsleft,#sportsright{
-            width:300px;
-            height:400px;
+            width:19%;
+            height:100%;
             border:0px solid #000;
             display:inline-block;
-            padding:2px;
+            position:relative
+            
         }
         #middle{
-            width:900px;
-            height:400px;
+            width:60%;
+            height:100%;
             display:inline-block
         }
         #sheet{
-            width:900px;
-            height:150px;
+            width:100%;
+            height:37%;
             display:block
             padding:2px;
+            
         }
         #main {
-              width:900px;
-              height:250px;
-              margin: 0px auto;
-              border: 0px solid #000;
+              width:100%;
+              height:60%;
+              margin: 2px auto;
+              border: 1px solid #c7c8c8;
               display:block;
               padding:2px;
+            
           }
         #footer{
-            width:1580px;
+            width:document.body.clientWidth;
             height:350px;
             margin:0px auto;
             padding:5px;
         }
         #service{
-            width:48%;
+            width:49%;
             height:100%;
             display:inline-block;
             padding:2px;
         }
         #return{
-            width:48%;
+            width:49%;
             height:100%;
             display:inline-block;
             padding:2px;
         }
         #servicetotal,#returntotal{
             width:100%;
-            height:50%;
+            height:53%;
             display:block;
+            border: 1px solid #c7c8c8;   
+            margin:5px        
         }
         #breakpointsl,#breakpointsr{
             width:100%;
-            height:40%;
+            height:43%;
             display:block;
+            border: 1px solid #c7c8c8;
+            margin:5px
         }
-        
+        #imgcontentleft{
+            margin-top:10px
+            border:1px solid #000;
+            position:absolute;left: 10%;top: 5%;
+            display:block
+        }
+        #imgcontentright{
+            margin-top:10px
+            border:1px solid #000;
+            position:absolute;right: 10%;top: 5%;
+            display:block
+        }
+        #playerleftname{
+            margin-top:10px;
+            display:block;
+            position:absolute;
+            left:10%;
+            top:55%
+        }
+        #playerrightname{
+            margin-top:10px;
+            display:block;
+            position:absolute;
+            right:10%;
+            top:55%
+        }
+        #playerleftname .first-name,#playerrightname .first-name{
+            font-Size:20px;
+            display:block;
+            font-family:"roboto_bold";
+        }
     </style>
 </head>
 <body>
@@ -80,23 +118,33 @@
     <script src="jquery-1.11.3.min.js"></script>
     <script src="visualization/statcreate.js"></script>
     <div id="header" align="center">
-        <div id="sportsleft" align="left">
-            <!-- <img id="img" width="100"/> -->
-        left</div>
-        <div id="middle" align="center">
-            <div id="sheet">sheet</div>
+        <div id="sportsleft">
+            <div id="imgcontentleft">
+                <img width=200px height=200px id="img"/>
+            </div> 
+            <div id="playerleftname">
+                <span class="first-name" id="left"></span>
+            </div>           
+        </div>
+        <div id="middle">
+            <div id="sheet"></div>
             <div id="main"></div>
         </div>      
-        <div id="sportsright" align="right">right</div>
+        <div id="sportsright">
+            <div id="imgcontentright">
+                <img width=200px height=200px id="imgright"/>
+            </div>
+            <div id="playerrightname">
+                <span class="first-name" id="right"></span>
+            </div>
+        </div>
     </div>
-    <div id="footer">
+    <div id="footer" align="center">
         <div id="service" align="center">
-            <span text-align:"center">发球数据</span>
             <div id="servicetotal" align="center"></div>
             <div id="breakpointsl" align="center"></div>
         </div>        
         <div id="return" align="center">
-            <span text-align:"center">接发球数据</span>
             <div id="returntotal" align="center"></div>
             <div id="breakpointsr" align="center"></div>
         </div>
@@ -4442,7 +4490,10 @@
         return url
     }
     
-    // document.getElementById('img').src=urlconvert(getQueryString("winnerimg"))
+    document.getElementById('img').src=urlconvert(getQueryString("winnerimg"))
+    document.getElementById('imgright').src=urlconvert(getQueryString("loserimg"))
+    document.getElementById('left').innerText=getQueryString("winner")
+    document.getElementById('right').innerText=getQueryString("loser")
     var radar = echarts.init(document.getElementById('main'));    
     option=creategraph(statdata,getQueryString("txt"),getQueryString("winner"),getQueryString("loser"))
     radar.setOption(option)
