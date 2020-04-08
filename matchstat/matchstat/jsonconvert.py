@@ -4,7 +4,7 @@ import json
 
 if __name__ == "__main__":
     with DB(db='matchstat') as db:
-        db.execute("SELECT `name`,`age`,`rank`,`height`,`weight`,`plays`,`turnpro`,`backhand` FROM `matchstat`.`imgofsportsman`")
+        db.execute("SELECT `name`,`nation`,`age`,`rank`,`height`,`weight`,`plays`,`turnpro`,`backhand` FROM `matchstat`.`imgofsportsman`")
         result=db.fetchall()
         fields=db.description
         

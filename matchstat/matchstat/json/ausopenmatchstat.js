@@ -1,4 +1,6 @@
-{"id": "8", "statcateg": "Service Stats", "statslabel": "Aces", "winner": "8", "loser": "11", "wstat": "None", "lstat": "None", "wactual": "None", "lactual": "None", "wbase": "None", "lbase": "None"},
+function ausopenmatchstat(){
+var statdata=[
+    {"id": "8", "statcateg": "Service Stats", "statslabel": "Aces", "winner": "8", "loser": "11", "wstat": "None", "lstat": "None", "wactual": "None", "lactual": "None", "wbase": "None", "lbase": "None"},
 {"id": "8", "statcateg": "Service Stats", "statslabel": "Double Faults", "winner": "0", "loser": "1", "wstat": "None", "lstat": "None", "wactual": "None", "lactual": "None", "wbase": "None", "lbase": "None"},
 {"id": "8", "statcateg": "Service Stats", "statslabel": "1st Serve", "winner": "64%(49/76)", "loser": "83%(72/87)", "wstat": "64", "lstat": "83", "wactual": "49", "lactual": "72", "wbase": "76", "lbase": "87"},
 {"id": "8", "statcateg": "Service Stats", "statslabel": "1st Serve Points Won", "winner": "84%(41/49)", "loser": "68%(49/72)", "wstat": "84", "lstat": "68", "wactual": "41", "lactual": "49", "wbase": "49", "lbase": "72"},
@@ -4323,3 +4325,6 @@
 {"id": "313", "statcateg": "Return Stats", "statslabel": "Return Games Played", "winner": "16", "loser": "15", "wstat": "None", "lstat": "None", "wactual": "None", "lactual": "None", "wbase": "None", "lbase": "None"},
 {"id": "313", "statcateg": "Point Stats", "statslabel": "Service Points Won", "winner": "64%(63/99)", "loser": "58%(61/105)", "wstat": "64", "lstat": "58", "wactual": "63", "lactual": "61", "wbase": "99", "lbase": "105"},
 {"id": "313", "statcateg": "Point Stats", "statslabel": "Return Points Won", "winner": "42%(44/105)", "loser": "36%(36/99)", "wstat": "42", "lstat": "36", "wactual": "44", "lactual": "36", "wbase": "105", "lbase": "99"},
+]
+return statdata
+}

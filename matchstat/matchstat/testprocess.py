@@ -52,20 +52,30 @@ if __name__ == "__main__":
     #         db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(loser[y][0],))
     #         img=db.fetchall()
     #         db.execute(sq,(7,loser[y][0],30,"image://http://"+img[0][0],5))   
+    # with DB(db='matchstat') as db:
+    #     db.execute("SELECT * FROM `matchstat`.`h2h`")
+    #     result=db.fetchall()  
+    #     for x in range(0,len(result)):
+    #         backhanded=str(result[x][9]).split()
+    #         backhandedr=str(result[x][19]).split()
+    #         if backhanded:            
+    #             if backhandedr:                
+    #                 firstname=re.findall("[A-Z][a-z]*",result[x][1])
+    #                 lastname=re.findall("[A-Z][a-z]*",result[x][11])
+    #                 namel=firstname[0]+' '+firstname[1]
+    #                 namer=lastname[0]+' '+lastname[1]
+    #                 # print(backhandedr[0])
+    #                 db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s where `name`=%s', (result[x][4],result[x][6],result[x][7],result[x][3],result[x][8],backhanded[0],result[x][10],namel))
+    #                 db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s where `name`=%s', (result[x][14],result[x][16],result[x][17],result[x][13],result[x][18],backhandedr[0],result[x][20],namer))
     with DB(db='matchstat') as db:
-        db.execute("SELECT * FROM `matchstat`.`h2h`")
-        result=db.fetchall()  
+        db.execute("SELECT `score`,`id` FROM `matchstat`.`ausopen` where `id`=2")
+        result=db.fetchall()
+        # score=str(re.sub('<a.*?>|<!.*?>|</a>','',str(result[0][0]))).split()
+        sq="INSERT INTO `matchstat`.`scores`(`winner1`,`winner2`,`winner3`,`winner4`,`winner5`,`loser1`,`loser2`,`loser3`,`loser4`,`loser5`,`id`) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,)"
         for x in range(0,len(result)):
-            backhanded=str(result[x][9]).split()
-            backhandedr=str(result[x][19]).split()
-            if backhanded:            
-                if backhandedr:                
-                    firstname=re.findall("[A-Z][a-z]*",result[x][1])
-                    lastname=re.findall("[A-Z][a-z]*",result[x][11])
-                    namel=firstname[0]+' '+firstname[1]
-                    namer=lastname[0]+' '+lastname[1]
-                    # print(backhandedr[0])
-                    db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s where `name`=%s', (result[x][4],result[x][6],result[x][7],result[x][3],result[x][8],backhanded[0],result[x][10],namel))
-                    db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s where `name`=%s', (result[x][14],result[x][16],result[x][17],result[x][13],result[x][18],backhandedr[0],result[x][20],namer))
-            
+            score=re.sub('<a.*?>|<!.*?>|</a>','',str(result[x][0]))
+            print(score)
+            # for y in range(0,len(score)):
+
+                db.execute(sq,(,result[x][5]))
             
