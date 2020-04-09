@@ -14,12 +14,13 @@ class AusopenmatchSpider(scrapy.Spider):
             yield scrapy.Request(url=url[0], callback=lambda response, id=url[1]: self.parse(response,id))
 
     # allowed_domains = ['https://www.atptour.com/en/scores/archive/australian-open/580/2020/results']
-
+    
     
     def parse(self, response,id):
         statcatg=response.xpath('//*[@id="completedMatchStats"]/table/tr/th/text()').getall()
         statname=response.xpath('//*[@id="completedMatchStats"]/table/tr[@class="match-stats-row percent-on"]').getall()
-        sq='INSERT INTO `matchstat`.`wmatchstat`(`id`, `statcateg`,`statslabel`,`loser`,`winner`) VALUES (%s,%s,%s,%s,%s) '
+        sq='INSERT INTO `matchstat`.`ausopenmatchstat` (`id`,`statcateg`,`statslabel`,`loser`,`winner`) values(%s,%s,%s,%s,%s)'
+
         with DB(db='matchstat') as db:
             for tr in range(0,len(statname)):
                 x=Selector(text=statname[tr]).xpath('//td[@class="match-stats-number-left"]/span/a/text()').get()

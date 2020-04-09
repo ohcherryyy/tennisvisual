@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     
     <title>list</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
         *{margin:0;padding:2}
         html,body{
@@ -135,6 +136,8 @@
         .playername{
             margin-left:7px
         }
+
+
     </style>
 </head>
 <body>
@@ -144,125 +147,163 @@
     <script src="matchstat/matchstat/json/sportsman.js"></script>
     <script src="matchstat/matchstat/json/ausopenmatchstat.js"></script>
     <script src="matchstat/matchstat/json/scoreausopen.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     
-    <div id="header" align="center">
-        <div id="sportsleft">
-            <div id="imgcontentleft">
-                <img width=200px height=200px id="img"/>
-            </div> 
-            <div id="playerleftname" align="left">
-                <span class="first-name" id="left"></span>
-                <span class="info" id="rank"></span>
-                <span class="info" id="age"></span>
-                <span class="info" id="height"></span>
-                <span class="info" id="weight"></span>
-                <span class="info" id="plays"></span>
-                <span class="info" id="backhand"></span>
-                <span class="info" id="turnpro"></span>
-            </div>           
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <div class="modal fade" id="leftlink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body" style="display: block;">
+              图表左
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>           
         </div>
-        <div id="middle">
-            <div id="sheet" align="center">
-                <div class="scoringcontent">
-                    <table class="scoretable" cellpadding="5">
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td><span>第1局</span></td>
-                                <td><span>第2局</span></td>
-                                <td><span>第3局</span></td>
-                                <td><span>第4局</span></td>
-                                <td><span>第5局</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="scoringplayer">
-                                        <div class="nationimg">
-                                            <img id="nationleft" width=30px/>
-                                        </div>                                       
-                                        <div class="playername">
-                                            <span id="playernameleft"></span>
+        </div>
+    </div>
+    <div class="modal fade" id="rightlink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body" style="display: block;">
+              图表右
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>           
+        </div>
+        </div>
+      </div>
+    <div class="container-fluid">
+        <div id="header" align="center">
+            <div id="sportsleft" class="black_overlay">
+                <div id="imgcontentleft">
+                    <img width=200px height=200px id="img"/>
+                </div> 
+                <div id="playerleftname" align="left">
+                    <a data-toggle="modal" href="#leftlink"><span class="first-name" id="left"></span></a>               
+                    <span class="info" id="rank"></span>
+                    <span class="info" id="age"></span>
+                    <span class="info" id="height"></span>
+                    <span class="info" id="weight"></span>
+                    <span class="info" id="plays"></span>
+                    <span class="info" id="backhand"></span>
+                    <span class="info" id="turnpro"></span>
+                </div>           
+            </div>
+            <div id="middle">
+                <div id="sheet" align="center">
+                    <div class="scoringcontent">
+                        <table class="scoretable" cellpadding="5">
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td><span>第1局</span></td>
+                                    <td><span>第2局</span></td>
+                                    <td><span>第3局</span></td>
+                                    <td><span>第4局</span></td>
+                                    <td><span>第5局</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="scoringplayer">
+                                            <div class="nationimg">
+                                                <img id="nationleft" width=30px/>
+                                            </div>                                       
+                                            <div class="playername">
+                                                <span id="playernameleft"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span id="winner1"></span>                             
-                                </td>
-                                <td>
-                                    <span id="winner2"></span>
-                                </td>
-                                <td>
-                                    <span id="winner3"></span>
-                                </td>
-                                <td>
-                                    <span id="winner4"></span>
-                                </td>
-                                <td>
-                                    <span id="winner5"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="scoringplayer">
-                                        <div class="nationimg">
-                                            <img id="nationright" width=30px />
+                                    </td>
+                                    <td>
+                                        <span id="winner1"></span>                             
+                                    </td>
+                                    <td>
+                                        <span id="winner2"></span>
+                                    </td>
+                                    <td>
+                                        <span id="winner3"></span>
+                                    </td>
+                                    <td>
+                                        <span id="winner4"></span>
+                                    </td>
+                                    <td>
+                                        <span id="winner5"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="scoringplayer">
+                                            <div class="nationimg">
+                                                <img id="nationright" width=30px />
+                                            </div>
+                                            <div class="playername">
+                                                <span id="playernameright"></span>
+                                            </div>
                                         </div>
-                                        <div class="playername">
-                                            <span id="playernameright"></span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span id="loser1"></span>                              
-                                </td>
-                                <td>
-                                    <span id="loser2"></span>
-                                </td>
-                                <td>
-                                    <span id="loser3"></span>
-                                </td>
-                                <td>
-                                    <span id="loser4"></span>
-                                </td>
-                                <td>
-                                    <span id="loser5"></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    </td>
+                                    <td>
+                                        <span id="loser1"></span>                              
+                                    </td>
+                                    <td>
+                                        <span id="loser2"></span>
+                                    </td>
+                                    <td>
+                                        <span id="loser3"></span>
+                                    </td>
+                                    <td>
+                                        <span id="loser4"></span>
+                                    </td>
+                                    <td>
+                                        <span id="loser5"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="main"></div>
+            </div>      
+            <div id="sportsright">
+                <div id="imgcontentright">
+                    <img width=200px height=200px id="imgright"/>
+                </div>
+                <div id="playerrightname" align="right">
+                    <a data-toggle="modal" href="#rightlink"><span class="first-name" id="right"></span></a>
+                    <span class="info" id="rankr"></span>
+                    <span class="info" id="ager"></span>
+                    <span class="info" id="heightr"></span>
+                    <span class="info" id="weightr"></span>
+                    <span class="info" id="playsr"></span>
+                    <span class="info" id="backhandr"></span>
+                    <span class="info" id="turnpror"></span>
+
                 </div>
             </div>
-            <div id="main"></div>
-        </div>      
-        <div id="sportsright">
-            <div id="imgcontentright">
-                <img width=200px height=200px id="imgright"/>
-            </div>
-            <div id="playerrightname" align="right">
-                <span class="first-name" id="right"></span>
-                <span class="info" id="rankr"></span>
-                <span class="info" id="ager"></span>
-                <span class="info" id="heightr"></span>
-                <span class="info" id="weightr"></span>
-                <span class="info" id="playsr"></span>
-                <span class="info" id="backhandr"></span>
-                <span class="info" id="turnpror"></span>
-
+        </div>
+        <div id="footer" align="center">
+            <div id="service" align="center">
+                <div id="servicetotal" align="center"></div>
+                <div id="breakpointsl" align="center"></div>
+            </div>        
+            <div id="return" align="center">
+                <div id="returntotal" align="center"></div>
+                <div id="breakpointsr" align="center"></div>
             </div>
         </div>
     </div>
-    <div id="footer" align="center">
-        <div id="service" align="center">
-            <div id="servicetotal" align="center"></div>
-            <div id="breakpointsl" align="center"></div>
-        </div>        
-        <div id="return" align="center">
-            <div id="returntotal" align="center"></div>
-            <div id="breakpointsr" align="center"></div>
-        </div>
-    </div>
-    
     <script type="text/javascript">
+    $('#leftlink').on("show.bs.modal",function(e){
+        var $this=$(this);
+        var $modal_dialog=$this.find('.modal-dialog');
+        $this.css('display','block');
+        $modal_dialog.css({'margin-top': Math.max(0, ($(window).height() - $modal_dialog.height()) / 2) });
+    })
+
+    $('#rightlink').on("show.bs.modal",function(f){
+        var $this=$(this);
+        var $modal_dialog=$this.find('.modal-dialog');
+        $this.css('display','block');
+        $modal_dialog.css({'margin-top': Math.max(0, ($(window).height() - $modal_dialog.height()) / 2) });
+    })
+
     var sportsman=sportsman()
     var statdata=ausopenmatchstat()
     

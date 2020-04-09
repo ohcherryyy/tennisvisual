@@ -68,14 +68,23 @@ if __name__ == "__main__":
     #                 db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s where `name`=%s', (result[x][4],result[x][6],result[x][7],result[x][3],result[x][8],backhanded[0],result[x][10],namel))
     #                 db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s where `name`=%s', (result[x][14],result[x][16],result[x][17],result[x][13],result[x][18],backhandedr[0],result[x][20],namer))
     with DB(db='matchstat') as db:
-        db.execute("SELECT `score`,`id` FROM `matchstat`.`ausopen` where `id`=2")
-        result=db.fetchall()
-        # score=str(re.sub('<a.*?>|<!.*?>|</a>','',str(result[0][0]))).split()
-        sq="INSERT INTO `matchstat`.`scores`(`winner1`,`winner2`,`winner3`,`winner4`,`winner5`,`loser1`,`loser2`,`loser3`,`loser4`,`loser5`,`id`) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,)"
+        db.execute("SELECT `id`,`statslabel`,`winner`,`loser` FROM `matchstat`.`ausopenmatchstat` WHERE `winner` LIKE '%\%%'")
+        result=db.fetchall()     
         for x in range(0,len(result)):
-            score=re.sub('<a.*?>|<!.*?>|</a>','',str(result[x][0]))
-            print(score)
-            # for y in range(0,len(score)):
+            winner=re.findall('\d+',result[x][2])
+            loser=re.findall('\d+',result[x][3])
+            db.execute('UPDATE `matchstat`.`ausopenmatchstat` SET `wstat`= %s,`lstat`= %s,`wbase`= %s,`lbase`= %s,`wactual`= %s,`lactual`= %s where `id`=%s and `statslabel`=%s', (winner[0],loser[0],winner[2],loser[2],winner[1],loser[1],result[x][0],result[x][1]))
+            
+    
+    # with DB(db='matchstat') as db:
+    #     db.execute("SELECT `score`,`id` FROM `matchstat`.`ausopen` where `id`=2")
+    #     result=db.fetchall()
+    #     # score=str(re.sub('<a.*?>|<!.*?>|</a>','',str(result[0][0]))).split()
+    #     sq="INSERT INTO `matchstat`.`scores`(`winner1`,`winner2`,`winner3`,`winner4`,`winner5`,`loser1`,`loser2`,`loser3`,`loser4`,`loser5`,`id`) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,)"
+    #     for x in range(0,len(result)):
+    #         score=re.sub('<a.*?>|<!.*?>|</a>','',str(result[x][0]))
+    #         print(score)
+    #         # for y in range(0,len(score)):
 
-                db.execute(sq,(,result[x][5]))
+    #             db.execute(sq,(,result[x][5]))
             
