@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>ECharts</title>
     <!-- 引入 echarts.js -->
     
@@ -13,8 +14,9 @@
             height:100%;
         }
         #main {
-              width:1587px;
-              height:730px;             
+              width:document.body.clientWidth;
+              height:740px;        
+              padding:5px;     
               margin: 0px auto;
               border: 5 px solid #ddd;
               
@@ -27,7 +29,9 @@
     <script src="visualization/creategraph.js"></script>
     <script src="matchstat/matchstat/json/ausopennodes.js"></script>
     <script src="matchstat/matchstat/json/ausopenlinks.js"></script>
-    <div id="main"></div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <div class="container-fluid"><div id="main"></div></div>
+    
     <script type="text/javascript">
     var nodes=ausopennodes()
     var links=ausopenlinks()

@@ -456,3 +456,357 @@ function breakpointrcreate(statdata,id,winnername,losername){
     };
     return option;
 }
+
+function wpersoncharts(statdata,id,sportsname){
+    var first=[]
+    var second=[]
+    var third=[]
+    var ace
+    var dfaults
+
+    for (var i=0;i<statdata.length;i++){
+        var temp={}
+        var temp1={}
+        var temp2={}
+        if(statdata[i].id==id){
+            if(statdata[i].statslabel=="Aces"){
+                ace=statdata[i].winner
+            }
+            if(statdata[i].statslabel=="Double Faults"){
+                dfaults=statdata[i].winner
+            }
+            switch(statdata[i].statslabel){
+                case('Service Points Won'):
+                    temp['name']="发球局数"
+                    temp['value']=statdata[i].wbase
+                    first.push(temp)
+                    break
+                case('Return Points Won'):
+                    temp['name']="接发球局数"
+                    temp['value']=statdata[i].wbase
+                    first.push(temp)
+                    break
+                case('1st Serve'):
+                    temp['name']="一发成功次数"
+                    temp['value']=statdata[i].wactual
+                    second.push(temp)
+                    break
+                case('Double Faults'):
+                    temp['name']="双误"
+                    temp['value']=statdata[i].winner
+                    second.push(temp)
+                    break
+                case('2nd Serve Points Won'):
+                    temp['name']="二发成功次数"
+                    temp['value']=statdata[i].wbase-dfaults
+                    second.push(temp)
+                    temp1['name']="二发得分次数"
+                    temp1['value']=statdata[i].wactual
+                    third.push(temp1)
+                    temp2['name']="二发未得分次数"
+                    temp2['value']=statdata[i].wbase-statdata[i].wactual
+                    third.push(temp2)
+                    break
+                case('1st Serve Return Points Won'):
+                    temp['name']="一发接球次数"
+                    temp['value']=statdata[i].wbase
+                    second.push(temp)
+                    temp1['name']="一发接球得分次数"
+                    temp1['value']=statdata[i].wactual
+                    third.push(temp1)
+                    temp2['name']="一发接球失分次数"
+                    temp2['value']=statdata[i].wbase-statdata[i].wactual
+                    third.push(temp2)
+                    break
+                case('2nd Serve Return Points Won'):
+                    temp['name']="二发接球次数"
+                    temp['value']=statdata[i].wbase
+                    second.push(temp)
+                    temp1['name']="二发接球得分次数"
+                    temp1['value']=statdata[i].wactual
+                    third.push(temp1)
+                    temp2['name']="二发接球失分次数"
+                    temp2['value']=statdata[i].wbase-statdata[i].wactual
+                    third.push(temp2)
+                    break
+                case('Aces'):
+                    temp['name']="Ace球次数"
+                    temp['value']=statdata[i].winner
+                    third.push(temp)
+                    break
+                case('1st Serve Points Won'):
+                    temp['name']="除Ace球外一发得分次数"
+                    temp['value']=statdata[i].wactual-ace
+                    third.push(temp)
+                    temp1['name']="一发未得分次数"
+                    temp1['value']=statdata[i].wbase-statdata[i].wactual
+                    third.push(temp1)
+                    break
+                }
+                
+        }
+    }
+    
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        series: [
+            {
+                name:sportsname,
+                type: 'pie',
+                selectedMode: 'single',
+                radius: [0, '30%'],
+    
+                label: {
+                    position: 'inner'
+                },
+                labelLine: {
+                    show: false
+                },
+                data: first
+            },
+            {
+                name:sportsname,
+                type: 'pie',
+                selectedMode: 'single',
+                radius: ['40%', '55%'],
+    
+                label: {
+                    position: 'inner'
+                },
+                labelLine: {
+                    show: false
+                },
+                data: second
+            },
+            {
+                name: sportsname,
+                type: 'pie',
+                radius: ['65%', '80%'],
+                label: {
+                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                    backgroundColor: '#eee',
+                    borderColor: '#aaa',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    // shadowBlur:3,
+                    // shadowOffsetX: 2,
+                    // shadowOffsetY: 2,
+                    // shadowColor: '#999',
+                    // padding: [0, 7],
+                    rich: {
+                        a: {
+                            color: '#999',
+                            lineHeight: 22,
+                            align: 'center'
+                        },
+                        // abg: {
+                        //     backgroundColor: '#333',
+                        //     width: '100%',
+                        //     align: 'right',
+                        //     height: 22,
+                        //     borderRadius: [4, 4, 0, 0]
+                        // },
+                        hr: {
+                            borderColor: '#aaa',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                        },
+                        b: {
+                            fontSize: 16,
+                            lineHeight: 33
+                        },
+                        per: {
+                            color: '#eee',
+                            backgroundColor: '#334455',
+                            padding: [2, 4],
+                            borderRadius: 2
+                        }
+                    }
+                },
+                data: third
+            }
+        ]
+    };
+    return option
+}
+
+function lpersoncharts(statdata,id,sportsname){
+    var first=[]
+    var second=[]
+    var third=[]
+    var ace
+    var dfaults
+
+    for (var i=0;i<statdata.length;i++){
+        var temp={}
+        var temp1={}
+        var temp2={}
+        if(statdata[i].id==id){
+            if(statdata[i].statslabel=="Aces"){
+                ace=statdata[i].loser
+            }
+            if(statdata[i].statslabel=="Double Faults"){
+                dfaults=statdata[i].loser
+            }
+            switch(statdata[i].statslabel){
+                case('Service Points Won'):
+                    temp['name']="发球局数"
+                    temp['value']=statdata[i].lbase
+                    first.push(temp)
+                    break
+                case('Return Points Won'):
+                    temp['name']="接发球局数"
+                    temp['value']=statdata[i].lbase
+                    first.push(temp)
+                    break
+                case('1st Serve'):
+                    temp['name']="一发成功次数"
+                    temp['value']=statdata[i].lactual
+                    second.push(temp)
+                    break
+                case('Double Faults'):
+                    temp['name']="双误"
+                    temp['value']=statdata[i].loser
+                    second.push(temp)
+                    break
+                case('2nd Serve Points Won'):
+                    temp['name']="二发成功次数"
+                    temp['value']=statdata[i].lbase-dfaults
+                    second.push(temp)
+                    temp1['name']="二发得分次数"
+                    temp1['value']=statdata[i].lactual
+                    third.push(temp1)
+                    temp2['name']="二发未得分次数"
+                    temp2['value']=statdata[i].lbase-statdata[i].lactual
+                    third.push(temp2)
+                    break
+                case('1st Serve Return Points Won'):
+                    temp['name']="一发接球次数"
+                    temp['value']=statdata[i].lbase
+                    second.push(temp)
+                    temp1['name']="一发接球得分次数"
+                    temp1['value']=statdata[i].lactual
+                    third.push(temp1)
+                    temp2['name']="一发接球失分次数"
+                    temp2['value']=statdata[i].lbase-statdata[i].lactual
+                    third.push(temp2)
+                    break
+                case('2nd Serve Return Points Won'):
+                    temp['name']="二发接球次数"
+                    temp['value']=statdata[i].lbase
+                    second.push(temp)
+                    temp1['name']="二发接球得分次数"
+                    temp1['value']=statdata[i].lactual
+                    third.push(temp1)
+                    temp2['name']="二发接球失分次数"
+                    temp2['value']=statdata[i].lbase-statdata[i].lactual
+                    third.push(temp2)
+                    break
+                case('Aces'):
+                    temp['name']="Ace球次数"
+                    temp['value']=statdata[i].loser
+                    third.push(temp)
+                    break
+                case('1st Serve Points Won'):
+                    temp['name']="除Ace球外一发得分次数"
+                    temp['value']=statdata[i].lactual-ace
+                    third.push(temp)
+                    temp1['name']="一发未得分次数"
+                    temp1['value']=statdata[i].lbase-statdata[i].lactual
+                    third.push(temp1)
+                    break
+                }
+                
+        }
+    }
+    
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        series: [
+            {
+                name:sportsname,
+                type: 'pie',
+                selectedMode: 'single',
+                radius: [0, '30%'],
+    
+                label: {
+                    position: 'inner'
+                },
+                labelLine: {
+                    show: false
+                },
+                data: first
+            },
+            {
+                name:sportsname,
+                type: 'pie',
+                selectedMode: 'single',
+                radius: ['40%', '55%'],
+    
+                label: {
+                    position: 'inner'
+                },
+                labelLine: {
+                    show: false
+                },
+                data: second
+            },
+            {
+                name: sportsname,
+                type: 'pie',
+                radius: ['65%', '80%'],
+                label: {
+                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                    backgroundColor: '#eee',
+                    borderColor: '#aaa',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    // shadowBlur:3,
+                    // shadowOffsetX: 2,
+                    // shadowOffsetY: 2,
+                    // shadowColor: '#999',
+                    // padding: [0, 7],
+                    rich: {
+                        a: {
+                            color: '#999',
+                            lineHeight: 22,
+                            align: 'center'
+                        },
+                        // abg: {
+                        //     backgroundColor: '#333',
+                        //     width: '100%',
+                        //     align: 'right',
+                        //     height: 22,
+                        //     borderRadius: [4, 4, 0, 0]
+                        // },
+                        hr: {
+                            borderColor: '#aaa',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                        },
+                        b: {
+                            fontSize: 16,
+                            lineHeight: 33
+                        },
+                        per: {
+                            color: '#eee',
+                            backgroundColor: '#334455',
+                            padding: [2, 4],
+                            borderRadius: 2
+                        }
+                    }
+                },
+                data: third
+            }
+        ]
+    };
+    return option
+}

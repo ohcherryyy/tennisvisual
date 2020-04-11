@@ -153,9 +153,8 @@
     
     <div class="modal fade" id="leftlink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-body" style="display: block;">
-              图表左
+          <div class="modal-content" style="width: 970px;height: 550px;">
+            <div class="modal-body" style="display: block;width: 970px;height: 500px;" id="personalw">           
             </div>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>           
         </div>
@@ -163,9 +162,9 @@
     </div>
     <div class="modal fade" id="rightlink" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-body" style="display: block;">
-              图表右
+          <div class="modal-content" style="width: 970px;height: 550px;">
+            <div class="modal-body" style="display: block;width: 970px; height: 500px;" id="personalr">
+    
             </div>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>           
         </div>
@@ -294,14 +293,16 @@
         var $this=$(this);
         var $modal_dialog=$this.find('.modal-dialog');
         $this.css('display','block');
-        $modal_dialog.css({'margin-top': Math.max(0, ($(window).height() - $modal_dialog.height()) / 2) });
+        $modal_dialog.css({'margin-top': Math.max(0, ($(window).height() - $modal_dialog.height()) / 3) });
+        $modal_dialog.css({'margin-left':Math.max(0,($(window).width() - $modal_dialog.width()) / 3.5)});
     })
 
     $('#rightlink').on("show.bs.modal",function(f){
         var $this=$(this);
         var $modal_dialog=$this.find('.modal-dialog');
         $this.css('display','block');
-        $modal_dialog.css({'margin-top': Math.max(0, ($(window).height() - $modal_dialog.height()) / 2) });
+        $modal_dialog.css({'margin-top': Math.max(0, ($(window).height() - $modal_dialog.height()) / 3) });
+        $modal_dialog.css({'margin-left':Math.max(0,($(window).width() - $modal_dialog.width()) / 3.5)});
     })
 
     var sportsman=sportsman()
@@ -408,6 +409,14 @@
     var pier = echarts.init(document.getElementById('breakpointsr')); 
     pieroption=breakpointrcreate(statdata,getQueryString("txt"),getQueryString("winner"),getQueryString("loser"))
     pier.setOption(pieroption)
+
+    var personalw = echarts.init(document.getElementById('personalw')); 
+    personalwoption=wpersoncharts(statdata,getQueryString("txt"),getQueryString("winner"))
+    personalw.setOption(personalwoption)
+
+    var personalr = echarts.init(document.getElementById('personalr')); 
+    personalroption=lpersoncharts(statdata,getQueryString("txt"),getQueryString("loser"))
+    personalr.setOption(personalroption)
 
     window.onresize=function(){
         radar.resize();
