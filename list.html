@@ -30,6 +30,7 @@
     <script src="matchstat/matchstat/json/ausopennodes.js"></script>
     <script src="matchstat/matchstat/json/ausopenlinks.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
+    
     <div class="container-fluid"><div id="main"></div></div>
     
     <script type="text/javascript">
@@ -83,12 +84,18 @@
         return img
     }
 
-    myChart.on('Click',{dataType:'edge'},function(params){
+    myChart.on('Click',function(params){
+        if(params.dataType=='edge'){
         var statid=params.data.id;
         var winner=params.data.target;
         var loser=params.data.source;
         img=getURL(winner,loser)       
         location.href="stat.html?"+"&txt="+encodeURI(statid)+"&winner="+encodeURI(winner)+"&loser="+encodeURI(loser)+"&winnerimg="+encodeURI(img['winner'])+"&loserimg="+encodeURI(img['loser']);
+        }
+        if(params.dataType=='node'){
+            var name=params.data.name;
+            location.href="personal.html?"+"&txt="+encodeURI(name);
+        }  
     })
     window.onresize=function(){
         myChart.resize();

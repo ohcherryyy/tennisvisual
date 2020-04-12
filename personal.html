@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    
+    <title>list</title>
+    <style>
+        *{margin:0;padding:0}
+        html,body{
+            width:100%;
+            height:100%;
+        }
+        #main {
+              /* width:document.body.clientWidth; */
+              height:740px;        
+              padding:5px;     
+              margin: 0px auto;
+              border: 5 px solid #ddd;
+              
+          }
+    </style>
+</head>
+<body>
+    <script src="echarts/incubator-echarts-4.6.0/dist/echarts.js"></script>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="visualization/personalcreate.js"></script>
+    <script src="matchstat/matchstat/json/personalcharts.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    
+    <div class="container-fluid"><div id="main"></div></div>
+
+    <script type="text/javascript">
+    var persondata=personalcharts()
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.href.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    function getURL(winner,loser){
+        var img=[]
+        for(var i =0;i<persondata.length;i++){
+            if(persondata[i].target==winner &&persondata[i].source==loser){
+                img['winner']=persondata[i].targetsymbol
+                img['loser']=persondata[i].sourcesymbol
+                break
+            }
+            if(persondata[i].target==loser && persondata[i].source==winner){
+                img['loser']=persondata[i].targetsymbol
+                img['winner']=persondata[i].sourcesymbol
+                break
+            }
+        }
+        console.log(img)
+        return img
+    }
+
+    var myChart = echarts.init(document.getElementById('main'));        
+    option=charts(persondata,getQueryString("txt"));
+    myChart.setOption(option)
+
+    myChart.on('Click',function(params){
+        if(params.dataType=='edge'){
+        var statid=params.data.id;
+        var winner=params.data.target;
+        var loser=params.data.source;
+        img=getURL(winner,loser)       
+        location.href="stat.html?"+"&txt="+encodeURI(statid)+"&winner="+encodeURI(winner)+"&loser="+encodeURI(loser)+"&winnerimg="+encodeURI(img['winner'])+"&loserimg="+encodeURI(img['loser']); 
+        }
+    })
+    </script>
+</body>
