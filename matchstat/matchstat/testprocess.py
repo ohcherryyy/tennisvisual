@@ -23,35 +23,35 @@ if __name__ == "__main__":
     #             db.execute(sq,(result[x][1],result[x][0],"64强",result[x][3]))
     #         if(result[x][2]=="Round of 128"):
     #             db.execute(sq,(result[x][1],result[x][0],"128强",result[x][3]))
-    # with DB(db='matchstat') as db:
-    #     db.execute("SELECT `winnername`,`round` FROM `matchstat`.`ausopen` WHERE `year`='2015.01.19 - 2015.02.01' ")
-    #     result=db.fetchall()
+    with DB(db='matchstat') as db:
+        db.execute("SELECT `winnername`,`round` FROM `matchstat`.`ausopen` WHERE `year`='2020.01.20 - 2020.02.03' ")
+        result=db.fetchall()
         
-    #     db.execute("SELECT `losername` FROM `matchstat`.`ausopen` WHERE `round`='Round of 128' and `year`='2015.01.19 - 2015.02.01'")
-    #     loser=db.fetchall()
+        db.execute("SELECT `losername` FROM `matchstat`.`ausopen` WHERE `round`='Round of 128' and `year`='2020.01.20 - 2020.02.03'")
+        loser=db.fetchall()
         
-    #     sq="INSERT IGNORE INTO `matchstat`.`2015ausopen`(`category`,`name`,`symbolSize`,`symbol`,`value`) VALUES(%s,%s,%s,%s,%s)"
-    #     for x in range(0,len(result)):
-    #         db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(result[x][0],))
-    #         img=db.fetchall()
-    #         if(result[x][1]=="Finals"):
-    #             db.execute(sq,(0,result[x][0],180,"image://http://"+img[0][0],50))
-    #         if(result[x][1]=="Semi-Finals"):
-    #             db.execute(sq,(1,result[x][0],150,"image://http://"+img[0][0],40))
-    #         if(result[x][1]=="Quarter-Finals"):
-    #             db.execute(sq,(2,result[x][0],130,"image://http://"+img[0][0],30))
-    #         if(result[x][1]=="Round of 16"):
-    #             db.execute(sq,(3,result[x][0],110,"image://http://"+img[0][0],25))
-    #         if(result[x][1]=="Round of 32"):
-    #             db.execute(sq,(4,result[x][0],90,"image://http://"+img[0][0],20))
-    #         if(result[x][1]=="Round of 64"):
-    #             db.execute(sq,(5,result[x][0],70,"image://http://"+img[0][0],15))
-    #         if(result[x][1]=="Round of 128"):
-    #             db.execute(sq,(6,result[x][0],50,"image://http://"+img[0][0],10))
-    #     for y in range(0,len(loser)):
-    #         db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(loser[y][0],))
-    #         img=db.fetchall()
-    #         db.execute(sq,(7,loser[y][0],30,"image://http://"+img[0][0],5))   
+        sq="INSERT IGNORE INTO `matchstat`.`2020ausopen`(`category`,`name`,`symbolSize`,`symbol`,`value`) VALUES(%s,%s,%s,%s,%s)"
+        for x in range(0,len(result)):
+            db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(result[x][0],))
+            img=db.fetchall()
+            if(result[x][1]=="Final"):
+                db.execute(sq,(0,result[x][0],180,"image://http://"+img[0][0],50))
+            if(result[x][1]=="Semifinals"):
+                db.execute(sq,(1,result[x][0],150,"image://http://"+img[0][0],40))
+            if(result[x][1]=="Quarterfinals"):
+                db.execute(sq,(2,result[x][0],130,"image://http://"+img[0][0],30))
+            if(result[x][1]=="Round of 16"):
+                db.execute(sq,(3,result[x][0],110,"image://http://"+img[0][0],25))
+            if(result[x][1]=="Round of 32"):
+                db.execute(sq,(4,result[x][0],90,"image://http://"+img[0][0],20))
+            if(result[x][1]=="Round of 64"):
+                db.execute(sq,(5,result[x][0],70,"image://http://"+img[0][0],15))
+            if(result[x][1]=="Round of 128"):
+                db.execute(sq,(6,result[x][0],50,"image://http://"+img[0][0],10))
+        for y in range(0,len(loser)):
+            db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(loser[y][0],))
+            img=db.fetchall()
+            db.execute(sq,(7,loser[y][0],30,"image://http://"+img[0][0],5))   
     
     # with DB(db='matchstat') as db:
     #     db.execute("SELECT * FROM `matchstat`.`h2h`")
@@ -90,26 +90,26 @@ if __name__ == "__main__":
 
     #             db.execute(sq,(,result[x][5]))
 
-    with DB(db='matchstat') as db:
-        db.execute("SELECT `id`,`winnername`,`losername`,`round`,`year` FROM `matchstat`.`ausopen`")         
-        result=db.fetchall()
-        sq="INSERT INTO `matchstat`.`ausopensearch`(`id`,`source`,`target`,`value`,`sourcesymbol`,`targetsymbol`,`year`) VALUES(%s,%s,%s,%s,%s,%s,%s)"
-        for x in range(0,len(result)):
-            db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s ",(result[x][1],))
-            symbol=db.fetchall()
-            db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s ",(result[x][2],))
-            losersymbol=db.fetchall()
-            if((result[x][3]=="Final")or(result[x][3]=="Finals")):
-                db.execute(sq,(result[x][0],result[x][1],result[x][2],"决赛","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
-            if((result[x][3]=="Semifinals")or(result[x][3]=="Semi-Finals")):
-                db.execute(sq,(result[x][0],result[x][1],result[x][2],"半决赛","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
-            if((result[x][3]=="Quarterfinals")or(result[x][3]=="Quarter-Finals")):
-                db.execute(sq,(result[x][0],result[x][1],result[x][2],"四分之一决赛","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
-            if(result[x][3]=="Round of 16"):
-                db.execute(sq,(result[x][0],result[x][1],result[x][2],"第四轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
-            if(result[x][3]=="Round of 32"):
-                db.execute(sq,(result[x][0],result[x][1],result[x][2],"第三轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
-            if(result[x][3]=="Round of 64"):
-                db.execute(sq,(result[x][0],result[x][1],result[x][2],"第二轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
-            if(result[x][3]=="Round of 128"):
-                db.execute(sq,(result[x][0],result[x][1],result[x][2],"第一轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
+    # with DB(db='matchstat') as db:
+    #     db.execute("SELECT `id`,`winnername`,`losername`,`round`,`year` FROM `matchstat`.`ausopen`")         
+    #     result=db.fetchall()
+    #     sq="INSERT INTO `matchstat`.`ausopensearch`(`id`,`source`,`target`,`value`,`sourcesymbol`,`targetsymbol`,`year`) VALUES(%s,%s,%s,%s,%s,%s,%s)"
+    #     for x in range(0,len(result)):
+    #         db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s ",(result[x][1],))
+    #         symbol=db.fetchall()
+    #         db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s ",(result[x][2],))
+    #         losersymbol=db.fetchall()
+    #         if((result[x][3]=="Final")or(result[x][3]=="Finals")):
+    #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"决赛","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
+    #         if((result[x][3]=="Semifinals")or(result[x][3]=="Semi-Finals")):
+    #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"半决赛","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
+    #         if((result[x][3]=="Quarterfinals")or(result[x][3]=="Quarter-Finals")):
+    #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"四分之一决赛","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
+    #         if(result[x][3]=="Round of 16"):
+    #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"第四轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
+    #         if(result[x][3]=="Round of 32"):
+    #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"第三轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
+    #         if(result[x][3]=="Round of 64"):
+    #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"第二轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
+    #         if(result[x][3]=="Round of 128"):
+    #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"第一轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
