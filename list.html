@@ -84,7 +84,20 @@
         return img
     }
 
+    // myChart.on('mouseover',function(params){
+    //         console.log(params)
+    // })
+    
+    var year=0
+
+    // myChart.on('mouseover',function(params){
+    //         console.log(params)
+    // })
+
     myChart.on('Click',function(params){
+        if(params.componentType=='timeline'){
+            year=params.dataIndex
+        }
         if(params.dataType=='edge'){
         var statid=params.data.id;
         var winner=params.data.target;
@@ -94,7 +107,7 @@
         }
         if(params.dataType=='node'){
             var name=params.data.name;
-            location.href="personal.html?"+"&txt="+encodeURI(name);
+            location.href="personal.html?"+"&txt="+encodeURI(name)+"&year="+encodeURI(year);
         }  
     })
     window.onresize=function(){

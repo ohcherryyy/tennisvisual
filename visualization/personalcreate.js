@@ -1,4 +1,4 @@
-function charts(statdata,name){
+function charts(statdata,name,index){
     var nodes=[]
     var links=[]
     nodes['2020']=[]
@@ -437,6 +437,16 @@ function charts(statdata,name){
                 autoPlay:false,
                 playInterval:2000,
                 data:['2020','2019','2018','2017','2016','2015','2014','2013','2012','2011'],
+                controlStyle:{
+                    showPlayBtn:false
+                },
+                currentIndex:index
+            },
+            title:{
+                text:name+'的对战记录',
+                textStyle:{
+                    fontSize:23,
+                },
             },
         series:[
             {
@@ -476,6 +486,12 @@ function charts(statdata,name){
 
     options:[
         {//2020
+            title:{
+                subtext:'2020澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2020'],
@@ -484,6 +500,12 @@ function charts(statdata,name){
             ]
         },
         {//2019
+            title:{
+                subtext:'2019澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2019'],
@@ -491,7 +513,13 @@ function charts(statdata,name){
                 }
             ]
         },
-        {//2020
+        {//2018
+            title:{
+                subtext:'2018澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2018'],
@@ -499,7 +527,13 @@ function charts(statdata,name){
                 }
             ]
         },
-        {//2020
+        {//2017
+            title:{
+                subtext:'2017澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2017'],
@@ -507,7 +541,13 @@ function charts(statdata,name){
                 }
             ]
         },
-        {//2020
+        {//2016
+            title:{
+                subtext:'2016澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2016'],
@@ -515,7 +555,13 @@ function charts(statdata,name){
                 }
             ]
         },
-        {//2020
+        {//2015
+            title:{
+                subtext:'2015澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2015'],
@@ -523,7 +569,13 @@ function charts(statdata,name){
                 }
             ]
         },
-        {//2020
+        {//2014
+            title:{
+                subtext:'2014澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2014'],
@@ -531,7 +583,13 @@ function charts(statdata,name){
                 }
             ]
         },
-        {//2020
+        {//2013
+            title:{
+                subtext:'2013澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2013'],
@@ -539,7 +597,13 @@ function charts(statdata,name){
                 }
             ]
         },
-        {//2020
+        {//2012
+            title:{
+                subtext:'2012澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2012'],
@@ -547,7 +611,13 @@ function charts(statdata,name){
                 }
             ]
         },
-        {//2020
+        {//2011
+            title:{
+                subtext:'2011澳大利亚网球公开赛（男单）',
+                subtextStyle:{
+                    fontSize:17
+                }
+            },
             series:[
                 {
                     nodes:nodes['2011'],
@@ -557,5 +627,142 @@ function charts(statdata,name){
         }
     ]
     }
+    return option
+}
+
+function getinfo(data,name){
+    var info=[]
+    for(var i=0;i<data.length;i++){
+        if(data[i].name==name){
+            info['img']=data[i].img
+            info['nation']=data[i].birthplace
+            info['rank']=data[i].rank
+            info['age']=data[i].age
+            info['height']=data[i].height
+            info['weight']=data[i].weight
+            switch(data[i].backhand){
+                case('Unknown'):
+                    info['backhand']="未知"
+                    break;
+                case('Two-Handed'):
+                    info['backhand']="两手"
+                    break
+                case('One-Handed'):
+                    info['backhand']="单手"
+                    break;
+            }
+            switch(data[i].plays){
+                case('R'):
+                    info['plays']="右手"
+                    break;
+                case('L'):
+                    info['plays']="左手"
+                    break;
+            }             
+            info['turnpro']=data[i].turnpro
+        }
+    }
+    return info
+}
+
+function winstat(data,name){
+    var result=[]
+    var sum=[]
+    
+    for(var i=0;i<data.length;i++){
+        var temp=0
+        for(var j=0;j<data[i].length;j++){
+                if(data[i][j].source==name){
+                    result[i]=data[i][j].value
+                    break
+                }
+                else{
+                    result[i]='冠军'
+                }
+        }
+        for(var k=0;k<data[i].length;k++){
+            if(data[i][k].target==name){
+                temp++
+            }
+        }
+        if(temp==0){
+            result[i]='未入围'
+        }
+        sum[i]=temp
+    }
+
+    for(var i=0;i<result.length;i++){
+        switch(result[i]){
+            case('决赛'):
+                result[i]='亚军'
+                break
+            case('半决赛'):
+                result[i]='4强'
+                break
+            case('四分之一决赛'):
+                result[i]='16强'
+                break
+        }
+    }
+
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer:{
+                type:'shadow'
+            },
+            formatter:function(params){
+                return params[0].name+'</br>'+params[0].marker+params[0].seriesName+':'+params[0].data+'</br>'+params[1].marker+params[1].seriesName+':'+params[1].data
+            },
+            confine:true
+        },
+        legend: {
+            data:['最佳成绩', '胜利场数']
+        },
+        dataZoom: {
+            show: false,
+            start: 0,
+            end: 100
+        },
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: true,
+                data: ['2020','2019','2018','2017','2016','2015','2014','2013','2012','2011']
+            },
+        ],
+        yAxis: [
+            {
+                type: 'category',
+                scale: true,
+                name: '成绩',
+                data:['未入围','128强','64强','32强','16强','8强','4强','亚军','冠军']
+            },
+            {
+                type: 'value',
+                scale: true,
+                name: '胜利场数',
+                max: 7,
+                min: 0,
+                boundaryGap: [0.2, 0.2]
+            }
+        ],
+        series: [
+            {
+                name: '胜利场数',
+                type: 'bar',
+                xAxisIndex: 0,
+                yAxisIndex: 1,
+                data: sum
+            },
+            {
+                name: '最佳成绩',
+                xAxisIndex: 0,
+                yAxisIndex: 0,
+                type: 'line',
+                data:result,               
+            }
+        ]
+    };
     return option
 }

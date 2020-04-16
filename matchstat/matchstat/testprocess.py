@@ -23,51 +23,51 @@ if __name__ == "__main__":
     #             db.execute(sq,(result[x][1],result[x][0],"64强",result[x][3]))
     #         if(result[x][2]=="Round of 128"):
     #             db.execute(sq,(result[x][1],result[x][0],"128强",result[x][3]))
-    with DB(db='matchstat') as db:
-        db.execute("SELECT `winnername`,`round` FROM `matchstat`.`ausopen` WHERE `year`='2020.01.20 - 2020.02.03' ")
-        result=db.fetchall()
-        
-        db.execute("SELECT `losername` FROM `matchstat`.`ausopen` WHERE `round`='Round of 128' and `year`='2020.01.20 - 2020.02.03'")
-        loser=db.fetchall()
-        
-        sq="INSERT IGNORE INTO `matchstat`.`2020ausopen`(`category`,`name`,`symbolSize`,`symbol`,`value`) VALUES(%s,%s,%s,%s,%s)"
-        for x in range(0,len(result)):
-            db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(result[x][0],))
-            img=db.fetchall()
-            if(result[x][1]=="Final"):
-                db.execute(sq,(0,result[x][0],180,"image://http://"+img[0][0],50))
-            if(result[x][1]=="Semifinals"):
-                db.execute(sq,(1,result[x][0],150,"image://http://"+img[0][0],40))
-            if(result[x][1]=="Quarterfinals"):
-                db.execute(sq,(2,result[x][0],130,"image://http://"+img[0][0],30))
-            if(result[x][1]=="Round of 16"):
-                db.execute(sq,(3,result[x][0],110,"image://http://"+img[0][0],25))
-            if(result[x][1]=="Round of 32"):
-                db.execute(sq,(4,result[x][0],90,"image://http://"+img[0][0],20))
-            if(result[x][1]=="Round of 64"):
-                db.execute(sq,(5,result[x][0],70,"image://http://"+img[0][0],15))
-            if(result[x][1]=="Round of 128"):
-                db.execute(sq,(6,result[x][0],50,"image://http://"+img[0][0],10))
-        for y in range(0,len(loser)):
-            db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(loser[y][0],))
-            img=db.fetchall()
-            db.execute(sq,(7,loser[y][0],30,"image://http://"+img[0][0],5))   
-    
     # with DB(db='matchstat') as db:
-    #     db.execute("SELECT * FROM `matchstat`.`h2h`")
-    #     result=db.fetchall()  
+    #     db.execute("SELECT `winnername`,`round` FROM `matchstat`.`ausopen` WHERE `year`='2020.01.20 - 2020.02.03' ")
+    #     result=db.fetchall()
+        
+    #     db.execute("SELECT `losername` FROM `matchstat`.`ausopen` WHERE `round`='Round of 128' and `year`='2020.01.20 - 2020.02.03'")
+    #     loser=db.fetchall()
+        
+    #     sq="INSERT IGNORE INTO `matchstat`.`2020ausopen`(`category`,`name`,`symbolSize`,`symbol`,`value`) VALUES(%s,%s,%s,%s,%s)"
     #     for x in range(0,len(result)):
-    #         backhanded=str(result[x][9]).split()
-    #         backhandedr=str(result[x][19]).split()
-    #         if backhanded:            
-    #             if backhandedr:                
-    #                 firstname=re.findall("[A-Z][a-z]*",result[x][1])
-    #                 lastname=re.findall("[A-Z][a-z]*",result[x][11])
-    #                 namel=firstname[0]+' '+firstname[1]
-    #                 namer=lastname[0]+' '+lastname[1]
-    #                 # print(backhandedr[0])
-    #                 db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s where `name`=%s', (result[x][4],result[x][6],result[x][7],result[x][3],result[x][8],backhanded[0],result[x][10],namel))
-    #                 db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s where `name`=%s', (result[x][14],result[x][16],result[x][17],result[x][13],result[x][18],backhandedr[0],result[x][20],namer))
+    #         db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(result[x][0],))
+    #         img=db.fetchall()
+    #         if(result[x][1]=="Final"):
+    #             db.execute(sq,(0,result[x][0],180,"image://http://"+img[0][0],50))
+    #         if(result[x][1]=="Semifinals"):
+    #             db.execute(sq,(1,result[x][0],150,"image://http://"+img[0][0],40))
+    #         if(result[x][1]=="Quarterfinals"):
+    #             db.execute(sq,(2,result[x][0],130,"image://http://"+img[0][0],30))
+    #         if(result[x][1]=="Round of 16"):
+    #             db.execute(sq,(3,result[x][0],110,"image://http://"+img[0][0],25))
+    #         if(result[x][1]=="Round of 32"):
+    #             db.execute(sq,(4,result[x][0],90,"image://http://"+img[0][0],20))
+    #         if(result[x][1]=="Round of 64"):
+    #             db.execute(sq,(5,result[x][0],70,"image://http://"+img[0][0],15))
+    #         if(result[x][1]=="Round of 128"):
+    #             db.execute(sq,(6,result[x][0],50,"image://http://"+img[0][0],10))
+    #     for y in range(0,len(loser)):
+    #         db.execute("SELECT `img` FROM `matchstat`.`imgofsportsman` WHERE `name`=%s",(loser[y][0],))
+    #         img=db.fetchall()
+    #         db.execute(sq,(7,loser[y][0],30,"image://http://"+img[0][0],5))   
+    
+    with DB(db='matchstat') as db:
+        db.execute("SELECT * FROM `matchstat`.`h2h`")
+        result=db.fetchall()  
+        for x in range(0,len(result)):
+            backhanded=str(result[x][9]).split()
+            backhandedr=str(result[x][19]).split()
+            if backhanded:            
+                if backhandedr:                
+                    firstname=re.findall("[A-Z][a-z]*",result[x][1])
+                    lastname=re.findall("[A-Z][a-z]*",result[x][11])
+                    namel=firstname[0]+' '+firstname[1]
+                    namer=lastname[0]+' '+lastname[1]
+                    # print(backhandedr[0])
+                    db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s,`birthplace`= %s where `name`=%s', (result[x][4],result[x][6],result[x][7],result[x][3],result[x][8],backhanded[0],result[x][10],result[x][5],namel))
+                    db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s,`birthplace`= %s where `name`=%s', (result[x][14],result[x][16],result[x][17],result[x][13],result[x][18],backhandedr[0],result[x][20],result[x][15],namer))
     
     # with DB(db='matchstat') as db:
     #     db.execute("SELECT `id`,`statslabel`,`winner`,`loser` FROM `matchstat`.`ausopenmatchstat` WHERE `winner` LIKE '%\%%'")
@@ -113,3 +113,5 @@ if __name__ == "__main__":
     #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"第二轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
     #         if(result[x][3]=="Round of 128"):
     #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"第一轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
+
+    

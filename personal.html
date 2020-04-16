@@ -21,6 +21,50 @@
               border: 5 px solid #ddd;
               
           }
+        .leftcharts{
+            width:65%;
+            height:100%;
+            display: inline-block;
+        }
+        .rightcharts{
+            width:34%;
+            height:100%;
+            display: inline-block;
+        }
+        .info{
+            font-size: 15px;
+            display: block;
+            font-family: "roboto_bold";
+        }
+        .info-name{
+            font-size: 25px;
+            display: block;
+            font-family: "roboto_bold";
+        }
+        #personal .imgcontent{
+            border:1px solid #c7c8c8;
+            position:absolute;right:17%;top: 7%;
+            display:block
+        }
+        #personal .playername{
+            margin-top:10px;
+            display:block;
+            position:absolute;
+            right:17%;
+            top:33%;
+            text-align: right;
+        }
+        .charts{
+            display:block;
+            position:absolute;
+            right:8%;
+            top:65%;
+            width: 470px;
+            height: 280px;
+        }
+        .search{
+            
+        }
     </style>
 </head>
 <body>
@@ -28,12 +72,37 @@
     <script src="jquery-1.11.3.min.js"></script>
     <script src="visualization/personalcreate.js"></script>
     <script src="matchstat/matchstat/json/personalcharts.js"></script>
+    <script src="matchstat/matchstat/json/sportsman.js"></script>
+    <script src="matchstat/matchstat/json/ausopenlinks.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     
-    <div class="container-fluid"><div id="main"></div></div>
+    <div class="container-fluid">
+        <div id="main">
+            <div class="leftcharts" id="charts"></div>
+            <div class="rightcharts" id="personal">
+                <div class="imgcontent">
+                    <img id="img" width="200px" height="200px"/>
+                </div>
+                <div class="playername">
+                    <span class="info-name" id="name"></span>
+                    <span class="info" id="nation"></span>
+                    <span class="info" id="rank"></span>
+                    <span class="info" id="age"></span>
+                    <span class="info" id="height"></span>
+                    <span class="info" id="weight"></span>
+                    <span class="info" id="plays"></span>
+                    <span class="info" id="backhand"></span>
+                    <span class="info" id="turnpro"></span>
+                </div>
+                <div class="charts" id="person"></div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript">
     var persondata=personalcharts()
+    var sportsman=sportsman()
+    var stat=ausopenlinks()
 
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -57,11 +126,36 @@
         }
         console.log(img)
         return img
-    }
+    }  
 
-    var myChart = echarts.init(document.getElementById('main'));        
-    option=charts(persondata,getQueryString("txt"));
+    
+
+    var myChart = echarts.init(document.getElementById('charts'));        
+    option=charts(persondata,getQueryString("txt"),getQueryString("year"));
     myChart.setOption(option)
+
+    var personcharts = echarts.init(document.getElementById('person'));        
+    personoption=winstat(stat,getQueryString("txt"));
+    personcharts.setOption(personoption)
+
+    var shownname=getQueryString("txt")
+    
+    
+    info=getinfo(sportsman,shownname)
+    winstat(stat,shownname)
+
+    document.getElementById('img').src="http://"+info['img']
+    document.getElementById('name').innerText=shownname
+    document.getElementById('nation').innerText="国籍："+info['nation']
+    document.getElementById('rank').innerText="世界排名："+info['rank']
+    document.getElementById('age').innerText="年龄："+info['age']
+    document.getElementById('plays').innerText="正手常用手："+info['plays']
+    document.getElementById('backhand').innerText="反手常用手："+info['backhand']
+    document.getElementById('height').innerText="身高："+info['height']
+    document.getElementById('weight').innerText="体重："+info['weight']
+    document.getElementById('turnpro').innerText="成为职业选手："+info['turnpro']
+
+    var index=0
 
     myChart.on('Click',function(params){
         if(params.dataType=='edge'){
@@ -71,6 +165,48 @@
         img=getURL(winner,loser)       
         location.href="stat.html?"+"&txt="+encodeURI(statid)+"&winner="+encodeURI(winner)+"&loser="+encodeURI(loser)+"&winnerimg="+encodeURI(img['winner'])+"&loserimg="+encodeURI(img['loser']); 
         }
+        if(params.componentType=='timeline'){
+            index=params.dataIndex
+            personcharts.dispatchAction({
+            type:'showTip',
+            seriesIndex:1,
+            dataIndex: index,
+            })
+        }
     })
+
+    myChart.on('mouseover',function(params){
+        if(params.dataType=='node'){
+            shownname=params.name
+            info=getinfo(sportsman,shownname)
+            document.getElementById('img').src="http://"+info['img']
+            document.getElementById('name').innerText=shownname
+            document.getElementById('nation').innerText="国籍："+info['nation']
+            document.getElementById('rank').innerText="世界排名："+info['rank']
+            document.getElementById('age').innerText="年龄："+info['age']
+            document.getElementById('plays').innerText="正手常用手："+info['plays']
+            document.getElementById('backhand').innerText="反手常用手："+info['backhand']
+            document.getElementById('height').innerText="身高："+info['height']
+            document.getElementById('weight').innerText="体重："+info['weight']
+            document.getElementById('turnpro').innerText="成为职业选手："+info['turnpro']
+            var personcharts = echarts.init(document.getElementById('person'));        
+            personoption=winstat(stat,shownname);
+            personcharts.setOption(personoption)
+            personcharts.dispatchAction({
+            type:'showTip',
+            seriesIndex:1,
+            dataIndex: index,
+            })
+        }
+        
+    })
+
+
+    personcharts.dispatchAction({
+        type:'showTip',
+        seriesIndex:1,
+        dataIndex: index,
+    })
+
     </script>
 </body>

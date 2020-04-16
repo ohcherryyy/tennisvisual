@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8">
     
-    <title>list</title>
+    <title>stat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./visualization/element.css">
     <style>
         *{margin:0;padding:2}
         html,body{
@@ -14,7 +15,7 @@
         #header{
             top:100px;
             width:document.body.clientWidth;
-            height:400px;
+            height:390px;
             margin:0px auto;
             border:0px solid #000;
             overflow:hidden; 
@@ -42,14 +43,13 @@
         #main {
               width:100%;
               height:60%;
-              margin: 2px auto;
               border: 1px solid #c7c8c8;
               display:block;
               padding:2px;            
           }
         #footer{
             width:document.body.clientWidth;
-            height:330px;
+            height:340px;
             margin:0px auto;
            
         }
@@ -82,13 +82,13 @@
         #imgcontentleft{
             margin-top:10px;
             border:1px solid #c7c8c8;
-            position:absolute;left: 10%;top: 5%;
+            position:absolute;left:8%;top: 5%;
             display:block
         }
         #imgcontentright{
             margin-top:10px;
             border:1px solid #c7c8c8;
-            position:absolute;right: 10%;top: 5%;
+            position:absolute;right: 8%;top: 5%;
             display:block
         }
         #playerleftname{
@@ -96,17 +96,17 @@
             display:block;
             position:absolute;
             left:10%;
-            top:56%
+            top:70%
         }
         #playerrightname{
             margin-top:10px;
             display:block;
             position:absolute;
             right:10%;
-            top:56%
+            top:70%
         }
         #playerleftname .first-name,#playerrightname .first-name{
-            font-Size:20px;
+            font-Size:25px;
             display:block;
             font-family:"roboto_bold";
         }
@@ -136,7 +136,6 @@
         .playername{
             margin-left:7px
         }
-
 
     </style>
 </head>
@@ -174,17 +173,12 @@
         <div id="header" align="center">
             <div id="sportsleft" class="black_overlay">
                 <div id="imgcontentleft">
-                    <img width=200px height=200px id="img"/>
+                    <img width=250px height=250px id="img"/>
                 </div> 
                 <div id="playerleftname" align="left">
-                    <a data-toggle="modal" href="#leftlink"><span class="first-name" id="left"></span></a>               
-                    <span class="info" id="rank"></span>
-                    <span class="info" id="age"></span>
-                    <span class="info" id="height"></span>
-                    <span class="info" id="weight"></span>
-                    <span class="info" id="plays"></span>
-                    <span class="info" id="backhand"></span>
-                    <span class="info" id="turnpro"></span>
+                    <a id="linkleft"><span class="first-name" id="left"></span></a>
+                    <!-- <a data-toggle="modal" href="#leftlink"></span></a>                -->
+                    <button type="button" data-toggle="modal" href="#leftlink" class="el-button el-button--info is-plain"><span>个人比赛数据</span></button>
                 </div>           
             </div>
             <div id="middle">
@@ -262,17 +256,11 @@
             </div>      
             <div id="sportsright">
                 <div id="imgcontentright">
-                    <img width=200px height=200px id="imgright"/>
+                    <img width=250px height=250px id="imgright"/>
                 </div>
                 <div id="playerrightname" align="right">
-                    <a data-toggle="modal" href="#rightlink"><span class="first-name" id="right"></span></a>
-                    <span class="info" id="rankr"></span>
-                    <span class="info" id="ager"></span>
-                    <span class="info" id="heightr"></span>
-                    <span class="info" id="weightr"></span>
-                    <span class="info" id="playsr"></span>
-                    <span class="info" id="backhandr"></span>
-                    <span class="info" id="turnpror"></span>
+                    <a id="linkright"><span class="first-name" id="right"></span></a>
+                    <button type="button" data-toggle="modal" href="#rightlink" class="el-button el-button--info is-plain"><span>个人比赛数据</span></button>
 
                 </div>
             </div>
@@ -358,6 +346,9 @@
     }
     var process=scoreausopen(getQueryString("txt"))
 
+    document.getElementById('linkleft').href="personal.html?"+"&txt="+encodeURI(getQueryString("winner"))+"&year="+encodeURI(0)
+    document.getElementById('linkright').href="personal.html?"+"&txt="+encodeURI(getQueryString("loser"))+"&year="+encodeURI(0)
+    
     document.getElementById('nationleft').src="http://"+getnation(getQueryString("winner"))
     document.getElementById('playernameleft').innerText=getQueryString("winner")
     document.getElementById('nationright').src="http://"+getnation(getQueryString("loser"))
@@ -366,20 +357,7 @@
     document.getElementById('imgright').src=urlconvert(getQueryString("loserimg"))
     document.getElementById('left').innerText=getQueryString("winner")
     document.getElementById('right').innerText=getQueryString("loser")
-    document.getElementById('rank').innerText="世界排名："+getinfo(getQueryString("winner"))['rank']
-    document.getElementById('age').innerText="年龄："+getinfo(getQueryString("winner"))['age']
-    document.getElementById('plays').innerText="正手常用手："+getinfo(getQueryString("winner"))['plays']
-    document.getElementById('backhand').innerText="反手常用手："+getinfo(getQueryString("winner"))['backhand']
-    document.getElementById('height').innerText="身高："+getinfo(getQueryString("winner"))['height']
-    document.getElementById('weight').innerText="体重："+getinfo(getQueryString("winner"))['weight']
-    document.getElementById('turnpro').innerText="成为职业选手："+getinfo(getQueryString("winner"))['turnpro']
-    document.getElementById('rankr').innerText="世界排名："+getinfo(getQueryString("loser"))['rank']
-    document.getElementById('ager').innerText="年龄："+getinfo(getQueryString("loser"))['age']
-    document.getElementById('playsr').innerText="正手常用手："+getinfo(getQueryString("loser"))['plays']
-    document.getElementById('backhandr').innerText="反手常用手："+getinfo(getQueryString("loser"))['backhand']
-    document.getElementById('heightr').innerText="身高："+getinfo(getQueryString("loser"))['height']
-    document.getElementById('weightr').innerText="体重："+getinfo(getQueryString("loser"))['weight']
-    document.getElementById('turnpror').innerText="成为职业选手："+getinfo(getQueryString("loser"))['turnpro']
+    
     document.getElementById('winner1').innerText=process['set1'].substring(0,1)
     document.getElementById('winner2').innerText=process['set2'].substring(0,1)
     document.getElementById('winner3').innerText=process['set3'].substring(0,1)

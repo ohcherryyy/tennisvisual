@@ -101,6 +101,9 @@ function getOption(nodes,links,categoriesname){
                 autoPlay:false,
                 playInterval:2000,
                 data:['2020','2019','2018','2017','2016','2015','2014','2013','2012','2011'],
+                controlStyle:{
+                    showPlayBtn:false
+                },
             },
             title:{
                 top:'5px'
