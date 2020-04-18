@@ -63,7 +63,9 @@
             height: 280px;
         }
         .search{
-            
+            position:absolute;
+            right:5%;
+            top:20%;
         }
     </style>
 </head>
@@ -128,10 +130,19 @@
         return img
     }  
 
-    
+    function year()
+    {
+        if(getQueryString("year")== null){
+            year=0
+        }
+        else{
+            year=getQueryString("year")
+        }
+        return year
+    }
 
     var myChart = echarts.init(document.getElementById('charts'));        
-    option=charts(persondata,getQueryString("txt"),getQueryString("year"));
+    option=charts(persondata,getQueryString("txt"),year());
     myChart.setOption(option)
 
     var personcharts = echarts.init(document.getElementById('person'));        

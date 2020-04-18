@@ -4,25 +4,26 @@ from scrapy.selector import Selector
 from scrapy.http import HtmlResponse
 
 if __name__ == "__main__":
-    # with DB(db='matchstat') as db:
-    #     db.execute("SELECT `winnername`,`losername`,`round`,`id` FROM `matchstat`.`ausopen` WHERE `year`='2015.01.19 - 2015.02.01' ")
-    #     result=db.fetchall()
-    #     sq="INSERT INTO `matchstat`.`2015ausopenlinks`(`source`,`target`,`value`,`id`) VALUES(%s,%s,%s,%s)"
-    #     for x in range(0,len(result)):
-    #         if(result[x][2]=="Finals"):
-    #             db.execute(sq,(result[x][1],result[x][0],"决赛",result[x][3]))
-    #         if(result[x][2]=="Semi-Finals"):
-    #             db.execute(sq,(result[x][1],result[x][0],"半决赛",result[x][3]))
-    #         if(result[x][2]=="Quarter-Finals"):
-    #             db.execute(sq,(result[x][1],result[x][0],"四分之一决赛",result[x][3]))
-    #         if(result[x][2]=="Round of 16"):
-    #             db.execute(sq,(result[x][1],result[x][0],"16强",result[x][3]))
-    #         if(result[x][2]=="Round of 32"):
-    #             db.execute(sq,(result[x][1],result[x][0],"32强",result[x][3]))
-    #         if(result[x][2]=="Round of 64"):
-    #             db.execute(sq,(result[x][1],result[x][0],"64强",result[x][3]))
-    #         if(result[x][2]=="Round of 128"):
-    #             db.execute(sq,(result[x][1],result[x][0],"128强",result[x][3]))
+    with DB(db='matchstat') as db:
+        db.execute("SELECT `winnername`,`losername`,`round`,`id` FROM `matchstat`.`ausopen` WHERE `year`='2017.01.16 - 2017.01.29' ")
+        result=db.fetchall()
+        sq="INSERT INTO `matchstat`.`2017ausopenlinks`(`source`,`target`,`value`,`id`) VALUES(%s,%s,%s,%s)"
+        for x in range(0,len(result)):
+            if(result[x][2]=="Finals"):
+                db.execute(sq,(result[x][1],result[x][0],"决赛",result[x][3]))
+            if(result[x][2]=="Semi-Finals"):
+                db.execute(sq,(result[x][1],result[x][0],"半决赛",result[x][3]))
+            if(result[x][2]=="Quarter-Finals"):
+                db.execute(sq,(result[x][1],result[x][0],"四分之一决赛",result[x][3]))
+            if(result[x][2]=="Round of 16"):
+                db.execute(sq,(result[x][1],result[x][0],"第四轮",result[x][3]))
+            if(result[x][2]=="Round of 32"):
+                db.execute(sq,(result[x][1],result[x][0],"第三轮",result[x][3]))
+            if(result[x][2]=="Round of 64"):
+                db.execute(sq,(result[x][1],result[x][0],"第二轮",result[x][3]))
+            if(result[x][2]=="Round of 128"):
+                db.execute(sq,(result[x][1],result[x][0],"第一轮",result[x][3]))
+
     # with DB(db='matchstat') as db:
     #     db.execute("SELECT `winnername`,`round` FROM `matchstat`.`ausopen` WHERE `year`='2020.01.20 - 2020.02.03' ")
     #     result=db.fetchall()
@@ -53,21 +54,21 @@ if __name__ == "__main__":
     #         img=db.fetchall()
     #         db.execute(sq,(7,loser[y][0],30,"image://http://"+img[0][0],5))   
     
-    with DB(db='matchstat') as db:
-        db.execute("SELECT * FROM `matchstat`.`h2h`")
-        result=db.fetchall()  
-        for x in range(0,len(result)):
-            backhanded=str(result[x][9]).split()
-            backhandedr=str(result[x][19]).split()
-            if backhanded:            
-                if backhandedr:                
-                    firstname=re.findall("[A-Z][a-z]*",result[x][1])
-                    lastname=re.findall("[A-Z][a-z]*",result[x][11])
-                    namel=firstname[0]+' '+firstname[1]
-                    namer=lastname[0]+' '+lastname[1]
-                    # print(backhandedr[0])
-                    db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s,`birthplace`= %s where `name`=%s', (result[x][4],result[x][6],result[x][7],result[x][3],result[x][8],backhanded[0],result[x][10],result[x][5],namel))
-                    db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s,`birthplace`= %s where `name`=%s', (result[x][14],result[x][16],result[x][17],result[x][13],result[x][18],backhandedr[0],result[x][20],result[x][15],namer))
+    # with DB(db='matchstat') as db:
+    #     db.execute("SELECT * FROM `matchstat`.`h2h`")
+    #     result=db.fetchall()  
+    #     for x in range(0,len(result)):
+    #         backhanded=str(result[x][9]).split()
+    #         backhandedr=str(result[x][19]).split()
+    #         if backhanded:            
+    #             if backhandedr:                
+    #                 firstname=re.findall("[A-Z][a-z]*",result[x][1])
+    #                 lastname=re.findall("[A-Z][a-z]*",result[x][11])
+    #                 namel=firstname[0]+' '+firstname[1]
+    #                 namer=lastname[0]+' '+lastname[1]
+    #                 # print(backhandedr[0])
+    #                 db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s,`birthplace`= %s where `name`=%s', (result[x][4],result[x][6],result[x][7],result[x][3],result[x][8],backhanded[0],result[x][10],result[x][5],namel))
+    #                 db.execute('UPDATE `matchstat`.`imgofsportsman` SET `age`= %s,`height`= %s,`weight`= %s,`rank`= %s,`plays`= %s,`backhand`= %s,`turnpro`= %s,`birthplace`= %s where `name`=%s', (result[x][14],result[x][16],result[x][17],result[x][13],result[x][18],backhandedr[0],result[x][20],result[x][15],namer))
     
     # with DB(db='matchstat') as db:
     #     db.execute("SELECT `id`,`statslabel`,`winner`,`loser` FROM `matchstat`.`ausopenmatchstat` WHERE `winner` LIKE '%\%%'")

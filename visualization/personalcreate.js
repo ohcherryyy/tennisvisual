@@ -700,7 +700,19 @@ function winstat(data,name){
                 result[i]='4强'
                 break
             case('四分之一决赛'):
+                result[i]='8强'
+                break
+            case('第四轮'):
                 result[i]='16强'
+                break
+            case('第三轮'):
+                result[i]='32强'
+                break 
+            case('第二轮'):
+                result[i]='64强'
+                break   
+            case('第一轮'):
+                result[i]='128强'
                 break
         }
     }
