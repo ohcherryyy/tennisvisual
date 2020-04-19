@@ -21,6 +21,13 @@
               border: 5 px solid #ddd;
               
           }
+          .search{
+            position:absolute;
+            left:6.8%;
+            top:7.3%;
+            z-index: 999;
+            width:220px
+        }
     </style>
 </head>
 <body>
@@ -31,7 +38,22 @@
     <script src="matchstat/matchstat/json/ausopenlinks.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     
-    <div class="container-fluid"><div id="main"></div></div>
+    <div class="container-fluid">
+        <div class="search">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="搜索感兴趣的运动员名字" id="search" aria-describedby="basic-addon1" onkeydown="entersearch()">
+                <br>
+                    <button type="button" class="btn btn-outline-secondary" text-align="center" onclick="searchsportsman()">
+                        <svg class="bi bi-search" width="18px" height="18px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>                   
+                
+            </div>
+        </div>  
+        <div id="main"></div>
+    </div>
     
     <script type="text/javascript">
     var nodes=ausopennodes()
@@ -67,6 +89,19 @@
     option=getOption(nodes,links,categoriesname);
     myChart.setOption(option)
     
+    function searchsportsman(){
+        value=document.getElementById('search').value
+        location.href="personal.html?"+"&txt="+value+"&year=0"
+    }
+    function entersearch(){
+        //alert(dd);
+        var event = window.event || arguments.callee.caller.arguments[0];
+        if (event.keyCode == 13)
+        {
+            searchsportsman()
+        }
+    }
+ 
     function getURL(winner,loser){
         var img=[]
         for(var i=0;i<nodes.length;i++){

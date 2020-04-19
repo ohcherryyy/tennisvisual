@@ -1,7 +1,14 @@
 function ausopenlinks(){
 var links=[
     [//2020
-        {"source": "Nick Kyrgios", "target": "Rafael Nadal", "value": "第四轮", "id": "8"},
+        {"source": "Dominic Thiem", "target": "Novak Djokovic", "value": "决赛", "id": "1"},
+{"source": "Roger Federer", "target": "Novak Djokovic", "value": "半决赛", "id": "2"},
+{"source": "Alexander Zverev", "target": "Dominic Thiem", "value": "半决赛", "id": "3"},
+{"source": "Rafael Nadal", "target": "Dominic Thiem", "value": "四分之一决赛", "id": "4"},
+{"source": "Milos Raonic", "target": "Novak Djokovic", "value": "四分之一决赛", "id": "5"},
+{"source": "Tennys Sandgren", "target": "Roger Federer", "value": "四分之一决赛", "id": "6"},
+{"source": "Stan Wawrinka", "target": "Alexander Zverev", "value": "四分之一决赛", "id": "7"},
+{"source": "Nick Kyrgios", "target": "Rafael Nadal", "value": "第四轮", "id": "8"},
 {"source": "Diego Schwartzman", "target": "Novak Djokovic", "value": "第四轮", "id": "9"},
 {"source": "Marton Fucsovics", "target": "Roger Federer", "value": "第四轮", "id": "10"},
 {"source": "Daniil Medvedev", "target": "Stan Wawrinka", "value": "第四轮", "id": "11"},
@@ -114,13 +121,7 @@ var links=[
 {"source": "Mikhail Kukushkin", "target": "Marc Polmans", "value": "第一轮", "id": "118"},
 {"source": "Marco Trungelliti", "target": "Tennys Sandgren", "value": "第一轮", "id": "119"},
 {"source": "Miomir Kecmanovic", "target": "Andreas Seppi", "value": "第一轮", "id": "120"},
-{"source": "Pablo Cuevas", "target": "Gilles Simon", "value": "第一轮", "id": "121"},
-{"source": "Max Purcell", "target": "Jannik Sinner", "value": "第一轮", "id": "122"},
-{"source": "Elliot Benchetrit", "target": "Yuichi Sugita", "value": "第一轮", "id": "123"},
-{"source": "Daniel Elahi Galan", "target": "Alejandro Tabilo", "value": "第一轮", "id": "124"},
-{"source": "Alexander Bublik", "target": "Jordan Thompson", "value": "第一轮", "id": "125"},
-{"source": "Evgeny Donskoy", "target": "Fernando Verdasco", "value": "第一轮", "id": "126"},
-{"source": "Yasutaka Uchiyama", "target": "Mikael Ymer", "value": "第一轮", "id": "127"},
+
     ],
 [//2019
     {"source": "Rafael Nadal", "target": "Novak Djokovic", "value": "决赛", "id": "606"},

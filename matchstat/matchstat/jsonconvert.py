@@ -4,7 +4,7 @@ import json
 
 if __name__ == "__main__":
     with DB(db='matchstat') as db:
-        db.execute("SELECT * FROM `matchstat`.`2011ausopenlinks`")
+        db.execute("SELECT * FROM `matchstat`.`2020ausopenlinks`")
         result=db.fetchall()
         fields=db.description
         
@@ -12,7 +12,7 @@ if __name__ == "__main__":
         for i in fields:   
             column_list.append(i[0])
         
-        with open('matchstat/matchstat/json/2011ausopenlinks.json','w+',encoding='utf-8') as f:
+        with open('matchstat/matchstat/json/2020ausopenlinks.json','w+',encoding='utf-8') as f:
             for row in result:
                 data={}
                 for i in range(len(column_list)):

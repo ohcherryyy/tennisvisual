@@ -106,7 +106,10 @@ function getOption(nodes,links,categoriesname){
                 },
             },
             title:{
-                top:'5px'
+                top:'5px',
+                textStyle:{
+                    fontSize:20
+                }
             },
         legend:{
             show:true,
@@ -166,7 +169,6 @@ function getOption(nodes,links,categoriesname){
                 {//2020
                     title:{
                         text:'2020澳大利亚网球公开赛（男单）',
-                        fontSize:20
                     },
                     series:[
                         {

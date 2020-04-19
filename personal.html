@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./visualization/element.css">
     <title>ECharts</title>
     <!-- 引入 echarts.js -->
     
@@ -64,8 +65,13 @@
         }
         .search{
             position:absolute;
-            right:5%;
-            top:20%;
+            left:1.5%;
+            top:10%;
+            z-index: 999;
+        }
+        .el-buttonel-button--infois-plain{
+            width: 40px;
+            height: 40px;
         }
     </style>
 </head>
@@ -80,6 +86,20 @@
     
     <div class="container-fluid">
         <div id="main">
+            <div class="search">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="搜索感兴趣的运动员名字" id="search" aria-describedby="basic-addon1" onkeydown="entersearch()"> 
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary" text-align="center" onclick="searchsportsman()">
+                            <svg class="bi bi-search" width="18px" height="18px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>                   
+                    </div>
+                </div>
+                <ul class="list-group" id="searchresult" style="list-style: none;"></ul>
+            </div>            
             <div class="leftcharts" id="charts"></div>
             <div class="rightcharts" id="personal">
                 <div class="imgcontent">
@@ -139,6 +159,114 @@
             year=getQueryString("year")
         }
         return year
+    }
+
+    function searchsportsman(){
+        value=document.getElementById('search').value
+        location.href="personal.html?"+"&txt="+value+"&year=0"
+    }
+    var currentline=-1
+    var select=false
+    function entersearch(){
+        //alert(dd);
+        var event = window.event || arguments.callee.caller.arguments[0];
+        if (event.keyCode == 13)
+        {
+            searchsportsman()
+        }
+        if(event.keyCode==38){
+            currentline--
+            currentline=selectli(currentline)
+        }
+        else if(event.keyCode==40){
+            currentline++
+            currentline=selectli(currentline)
+            console.log(currentline)
+        }
+    }
+    document.getElementById('search').oninput=function fuzzysearch(keyword,data){
+        keyword=document.getElementById('search').value
+        data=sportsman
+        if(keyword==''){
+            deleteli()
+            console.log("delete")
+        }
+        else{
+            var reg=new RegExp(keyword,'i')
+            var arr = [];       
+            for (var j = 0; j < data.length; j++) {
+                if (reg.test(data[j].name)) {
+                    arr.push(data[j].name);                
+                }
+            }
+            createli(arr)
+        }
+    }
+    function createli(arr){
+        if(arr!=null){
+            var ul=document.getElementById('searchresult')
+            deleteli()
+            for(var j=0;j<arr.length;j++)
+            {
+                if(j<7){
+                    var li=document.createElement('li')
+                    li.innerHTML='<li class="list-group-item" onmouseover="mouseaction(this)" onmouseout="mouseout(this)" onclick="mouseclick(this)">'+arr[j]+'</li>'
+                    ul.appendChild(li)
+                }        
+            }
+        }   
+    }
+    function deleteli(){
+        var ul=document.getElementById('searchresult')
+        var list=ul.getElementsByTagName('li')
+        for(var i=0;i<list.length;i++){
+            list[i].parentNode.removeChild(list[i])
+        }
+    }
+    function selectli(i){
+        var ul=document.getElementById('searchresult')
+        var list=ul.getElementsByClassName('list-group-item')
+        if(!select){
+            original=document.getElementById('search').value
+            select=true
+        }
+        if(i>=list.length)
+        {
+            i=list.length-1
+        }
+        if(i<0)
+        {
+            if(i<-1)
+            {
+                i=-1
+            }
+            select=false
+            document.getElementById('search').value=original
+            list[0].className="list-group-item"
+        }
+        else{
+            list[i].className="list-group-item list-group-item-action list-group-item-dark"
+            document.getElementById('search').value=list[i].innerText
+            for(var j=0;j<list.length;j++){
+                if(j!=i){
+                    list[j].className="list-group-item"
+                }
+            }
+        }    
+        return i
+    }
+    function mouseaction(li){
+        li.className="list-group-item list-group-item-action list-group-item-dark"
+        
+    }
+    function mouseout(li){
+        li.className="list-group-item"
+
+    }
+    function mouseclick(li)
+    {
+        document.getElementById('search').value=li.innerText
+        searchsportsman()
     }
 
     var myChart = echarts.init(document.getElementById('charts'));        
