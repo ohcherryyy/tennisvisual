@@ -13,16 +13,16 @@
             height:100%;
         }
         #header{
-            top:100px;
+            /* top:50px; */
             width:document.body.clientWidth;
-            height:390px;
+            height:360px;
             margin:0px auto;
             border:0px solid #000;
             overflow:hidden; 
             vertical-align:middle           
         }
         #sportsleft,#sportsright{
-            width:20%;
+            width:18%;
             height:100%;
             border:0px solid #000;
             display:inline-block;
@@ -30,19 +30,19 @@
             
         }
         #middle{
-            width:59%;
+            width:61%;
             height:100%;
             display:inline-block
         }
         #sheet{
             width:100%;
-            height:37%;
+            height:33%;
             display:block;
             padding:2px;        
         }
         #main {
               width:100%;
-              height:60%;
+              height:64%;
               border: 1px solid #c7c8c8;
               display:block;
               padding:2px;            
@@ -82,28 +82,28 @@
         #imgcontentleft{
             margin-top:10px;
             border:1px solid #c7c8c8;
-            position:absolute;left:8%;top: 5%;
+            position:absolute;left:2%;top: 2%;
             display:block
         }
         #imgcontentright{
             margin-top:10px;
             border:1px solid #c7c8c8;
-            position:absolute;right: 8%;top: 5%;
+            position:absolute;right: 2%;top: 2%;
             display:block
         }
         #playerleftname{
             margin-top:10px;
             display:block;
             position:absolute;
-            left:10%;
-            top:70%
+            left:3%;
+            top:72%
         }
         #playerrightname{
             margin-top:10px;
             display:block;
             position:absolute;
-            right:10%;
-            top:70%
+            right:3%;
+            top:72%
         }
         #playerleftname .first-name,#playerrightname .first-name{
             font-Size:25px;
@@ -127,7 +127,7 @@
         }
         .scoringcontent{
             display:block;
-            margin-top:30px
+            margin-top:8px
         }
         .scoringplayer{
             display:flex;
@@ -135,6 +135,17 @@
         }
         .playername{
             margin-left:7px
+        }
+        #matchdetail{
+            width: document.body.clientWidth;
+            height:340px;
+            margin:0px auto;
+        }
+        #detail{
+            width:1510px;
+            height:340px;
+            position: relative;
+            display: block;
         }
 
     </style>
@@ -265,16 +276,28 @@
                 </div>
             </div>
         </div>
-        <div id="footer" align="center">
-            <div id="service" align="center">
-                <div id="servicetotal" align="center"></div>
-                <div id="breakpointsl" align="center"></div>
-            </div>        
-            <div id="return" align="center">
-                <div id="returntotal" align="center"></div>
-                <div id="breakpointsr" align="center"></div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#footer" data-toggle="tab">技术统计</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#matchdetail" data-toggle="tab">比赛</a>
+              </li>
+        </ul>
+        <div class="tab-content">
+            <div id="footer" align="center" class="tab-pane active">
+                <div id="service" align="center">
+                    <div id="servicetotal" align="center"></div>
+                    <div id="breakpointsl" align="center"></div>
+                </div>        
+                <div id="return" align="center">
+                    <div id="returntotal" align="center"></div>
+                    <div id="breakpointsr" align="center"></div>
+                </div>
             </div>
+            <div id="matchdetail" class="tab-pane"><div id="detail"></div></div>
         </div>
+        
     </div>
     <script type="text/javascript">
     $('#leftlink').on("show.bs.modal",function(e){
@@ -395,6 +418,16 @@
     var personalr = echarts.init(document.getElementById('personalr')); 
     personalroption=lpersoncharts(statdata,getQueryString("txt"),getQueryString("loser"))
     personalr.setOption(personalroption)
+
+    if(getQueryString("txt")==1){
+        var detail = echarts.init(document.getElementById('detail')); 
+        detailoption=detailstats(getQueryString("winner"),getQueryString("loser"))
+        detail.setOption(detailoption)
+    }
+    else{
+        document.getElementById("detail").innerText="无数据"
+    }
+    
 
     window.onresize=function(){
         radar.resize();

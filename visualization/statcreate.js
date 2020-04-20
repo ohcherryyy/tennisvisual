@@ -59,13 +59,9 @@ function creategraph(statdata,id,winnername,losername){
                     winnerf.push(100-Number(statdata[i].wstat))
                     loserf.push(100-Number(statdata[i].lstat))
                     break;
-                case('2nd Serve Points Won'):
-                    winnerf.push(Number(statdata[i].wstat))
-                    loserf.push(Number(statdata[i].lstat))
-                    break;
                 case('Break Points Saved'):
-                    winnerf.push(Number(statdata[i].wbase))
-                    loserf.push(Number(statdata[i].lbase))
+                    winnerf.push(100-Number(statdata[i].wstat))
+                    loserf.push(100-Number(statdata[i].lstat))
                     break;
             }
         }
@@ -101,9 +97,10 @@ function creategraph(statdata,id,winnername,losername){
         {
             indicator:[
                 {text:'双发失误次数'},
+                {text:'被破发率(%)',max:100},
                 {text:'一发接发球失误率(%)',max:100},
                 {text:'二发接发球失误率(%)',max:100},
-                {text:'被破发率(%)',max:100},
+                
             ],
             center:['75%','50%'],
             radius:70
@@ -140,27 +137,119 @@ function servicecreate(statdata,id,winnername,losername){
     var firstpoints=[]
     var secondpoints=[]
     for (var i=0;i<statdata.length;i++){
-        if(statdata[i].id==id){            
+        if(statdata[i].id==id){    
+            var winner={}
+            var loser={}        
             switch(statdata[i].statslabel){
-                case('Aces'):
-                    ace.push(Number(statdata[i].winner))
-                    ace.push(Number(statdata[i].loser))
+                case('Aces'):   
+                    winner['value']=Number(statdata[i].winner)   
+                    loser['value']=Number(statdata[i].loser)
+                    if(Number(statdata[i].winner)>Number(statdata[i].loser)){
+                        winner['itemStyle']={}
+                        winner['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        winner['itemStyle']['borderWidth']=3
+                        ace.push(winner)
+                        ace.push(loser)
+                    }
+                    else if(Number(statdata[i].winner)<Number(statdata[i].loser)){
+                        loser['itemStyle']={}
+                        loser['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        loser['itemStyle']['borderWidth']=3
+                        ace.push(winner)
+                        ace.push(loser)
+                    }
+                    else{
+                        ace.push(winner)
+                        ace.push(loser)
+                    }
                     break;
                 case('1st Serve'):
-                    firstsuccess.push(Number(statdata[i].wactual))
-                    firstsuccess.push(Number(statdata[i].lactual))
+                    winner['value']=Number(statdata[i].wactual)   
+                    loser['value']=Number(statdata[i].lactual)
+                    if(Number(statdata[i].wactual)>Number(statdata[i].lactual)){
+                        winner['itemStyle']={}
+                        winner['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        winner['itemStyle']['borderWidth']=3
+                        firstsuccess.push(winner)
+                        firstsuccess.push(loser)
+                    }
+                    else if(Number(statdata[i].wactual)<Number(statdata[i].lactual)){
+                        loser['itemStyle']={}
+                        loser['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        loser['itemStyle']['borderWidth']=3
+                        firstsuccess.push(winner)
+                        firstsuccess.push(loser)
+                    }
+                    else{
+                        firstsuccess.push(winner)
+                        firstsuccess.push(loser)
+                    }
                     break;
                 case('1st Serve Points Won'):
-                    firstpoints.push(Number(statdata[i].wactual))
-                    firstpoints.push(Number(statdata[i].lactual))
+                    winner['value']=Number(statdata[i].wactual)   
+                    loser['value']=Number(statdata[i].lactual)
+                    if(Number(statdata[i].wactual)>Number(statdata[i].lactual)){
+                        winner['itemStyle']={}
+                        winner['itemStyle']['borderColor']='rgba(0,0,0,1)'
+                        winner['itemStyle']['borderWidth']=3
+                        firstpoints.push(winner)
+                        firstpoints.push(loser)
+                    }
+                    else if(Number(statdata[i].wactual)<Number(statdata[i].lactual)){
+                        loser['itemStyle']={}
+                        loser['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        loser['itemStyle']['borderWidth']=3
+                        firstpoints.push(winner)
+                        firstpoints.push(loser)
+                    }
+                    else{
+                        firstpoints.push(winner)
+                        firstpoints.push(loser)
+                    }
                     break;
                 case('2nd Serve Points Won'):
-                    secondpoints.push(Number(statdata[i].wactual))
-                    secondpoints.push(Number(statdata[i].lactual))
+                    winner['value']=Number(statdata[i].wactual)   
+                    loser['value']=Number(statdata[i].lactual)
+                    if(Number(statdata[i].wactual)>Number(statdata[i].lactual)){
+                        winner['itemStyle']={}
+                        winner['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        winner['itemStyle']['borderWidth']=3
+                        secondpoints.push(winner)
+                        secondpoints.push(loser)
+                    }
+                    else if(Number(statdata[i].wactual)<Number(statdata[i].lactual)){
+                        loser['itemStyle']={}
+                        loser['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        loser['itemStyle']['borderWidth']=3
+                        secondpoints.push(winner)
+                        secondpoints.push(loser)
+                    }
+                    else{
+                        secondpoints.push(winner)
+                        secondpoints.push(loser)
+                    }
                     break;
                 case('Double Faults'):
-                    df.push(Number(statdata[i].winner))
-                    df.push(Number(statdata[i].loser))
+                    winner['value']=Number(statdata[i].winner)   
+                    loser['value']=Number(statdata[i].loser)
+                    if(Number(statdata[i].winner)<Number(statdata[i].loser)){
+                        winner['itemStyle']={}
+                        winner['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        winner['itemStyle']['borderWidth']=3
+                        df.push(winner)
+                        df.push(loser)
+                    }
+                    else if(Number(statdata[i].winner)>Number(statdata[i].loser)){
+                        loser['itemStyle']={}
+                        loser['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        loser['itemStyle']['borderWidth']=3
+                        df.push(winner)
+                        df.push(loser)
+                    }
+                    else{
+                        df.push(winner)
+                        df.push(loser)
+                    }
                     break;
             }
         }
@@ -171,6 +260,7 @@ function servicecreate(statdata,id,winnername,losername){
             text:'发球表现',
             left:'auto'
         },
+        color:['#c23531','#2f4554'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {            
@@ -255,15 +345,53 @@ function returncreate(statdata,id,winnername,losername){
     var firstpoints=[]
     var secondpoints=[]
     for (var i=0;i<statdata.length;i++){
-        if(statdata[i].id==id){            
+        if(statdata[i].id==id){        
+            var winner={}
+            var loser={}    
             switch(statdata[i].statslabel){
                 case('1st Serve Return Points Won'):
-                    firstpoints.push(Number(statdata[i].wactual))
-                    firstpoints.push(Number(statdata[i].lactual))
+                    winner['value']=Number(statdata[i].wactual)  
+                    loser['value']=Number(statdata[i].lactual)
+                    if(Number(statdata[i].wactual)>Number(statdata[i].lactual)){
+                        winner['itemStyle']={}
+                        winner['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        winner['itemStyle']['borderWidth']=2
+                        firstpoints.push(winner)
+                        firstpoints.push(loser)
+                    }
+                    else if(Number(statdata[i].wactual)<Number(statdata[i].lactual)){
+                        loser['itemStyle']={}
+                        loser['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        loser['itemStyle']['borderWidth']=2
+                        firstpoints.push(winner)
+                        firstpoints.push(loser)
+                    }
+                    else{
+                        firstpoints.push(winner)
+                        firstpoints.push(loser)
+                    }
                     break;
                 case('2nd Serve Return Points Won'):
-                    secondpoints.push(Number(statdata[i].wactual))
-                    secondpoints.push(Number(statdata[i].lactual))
+                    winner['value']=Number(statdata[i].wactual)  
+                    loser['value']=Number(statdata[i].lactual)
+                    if(Number(statdata[i].wactual)>Number(statdata[i].lactual)){
+                        winner['itemStyle']={}
+                        winner['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        winner['itemStyle']['borderWidth']=2
+                        secondpoints.push(winner)
+                        secondpoints.push(loser)
+                    }
+                    else if(Number(statdata[i].wactual)<Number(statdata[i].lactual)){
+                        loser['itemStyle']={}
+                        loser['itemStyle']['borderColor']='rgba(0,0,0, 1)'
+                        loser['itemStyle']['borderWidth']=2
+                        secondpoints.push(winner)
+                        secondpoints.push(loser)
+                    }
+                    else{
+                        secondpoints.push(winner)
+                        secondpoints.push(loser)
+                    }
                     break;
             }
         }
@@ -368,7 +496,7 @@ function breakpointscreate(statdata,id,winnername,losername){
                 radius: ['60%','80%'],
                 center: ['60%', '50%'],
                 data: [
-                    {value:loser,},
+                    {value:loser},
                     {value:100-loser,name:''}
                 ],
                 labelLine:{
@@ -391,14 +519,43 @@ function breakpointscreate(statdata,id,winnername,losername){
 }
 
 function breakpointrcreate(statdata,id,winnername,losername){
+    var winnedata=[]
+    var loserdata=[]
     for (var i=0;i<statdata.length;i++){
-        if(statdata[i].id==id){    
+        if(statdata[i].id==id){  
+            var winner={}
+            var loser={}  
             if(statdata[i].statslabel=='Break Points Converted')
             {
-                winner=Number(statdata[i].wstat)
                 wlabel=statdata[i].winner
-                loser=Number(statdata[i].lstat)
                 llabel=statdata[i].loser
+                if(Number(statdata[i].wstat)>Number(statdata[i].lstat)){
+                    winner['value']=Number(statdata[i].wstat)
+                    // winner['selected']=true
+                    loser['value']=Number(statdata[i].lstat)
+                    winnedata.push(winner)
+                    winnedata.push(100-Number(statdata[i].wstat))
+                    loserdata.push(loser)
+                    loserdata.push(100-Number(statdata[i].lstat))
+                }
+                else if(Number(statdata[i].wstat)<Number(statdata[i].lstat)){
+                    winner['value']=Number(statdata[i].wstat)
+                    loser['selected']=true
+                    loser['value']=Number(statdata[i].lstat)
+                    winnedata.push(winner)
+                    winnedata.push(100-Number(statdata[i].wstat))
+                    loserdata.push(loser)
+                    loserdata.push(100-Number(statdata[i].lstat))
+                }
+                else{
+                    winner['value']=Number(statdata[i].wstat)
+                    loser['value']=Number(statdata[i].lstat)
+                    winnedata.push(winner)
+                    winnedata.push(100-Number(statdata[i].wstat))
+                    loserdata.push(loser)
+                    loserdata.push(100-Number(statdata[i].lstat))
+                }
+                break
             }
             }
         }
@@ -414,10 +571,7 @@ function breakpointrcreate(statdata,id,winnername,losername){
                 type: 'pie',
                 radius: ['60%','80%'],
                 center: ['40%', '50%'],
-                data: [
-                    {value:winner},
-                    {value:100-winner}
-                ],
+                data: winnedata,
                 labelLine:{
                     show:false
                 },
@@ -434,10 +588,7 @@ function breakpointrcreate(statdata,id,winnername,losername){
                 type: 'pie',
                 radius: ['60%','80%'],
                 center: ['60%', '50%'],
-                data: [
-                    {value:loser,},
-                    {value:100-loser,name:''}
-                ],
+                data: loserdata,
                 labelLine:{
                     show:false
                 },
@@ -588,13 +739,13 @@ function wpersoncharts(statdata,id,sportsname){
                 label: {
                     formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
                     backgroundColor: '#eee',
-                    borderColor: '#aaa',
-                    borderWidth: 1,
+                   borderColor: '#aaa',
+                borderWidth: 1,
                     borderRadius: 4,
-                    // shadowBlur:3,
+                    //borderWidth:3,
                     // shadowOffsetX: 2,
                     // shadowOffsetY: 2,
-                    // shadowColor: '#999',
+                    // borderColor: '#999',
                     // padding: [0, 7],
                     rich: {
                         a: {
@@ -610,9 +761,9 @@ function wpersoncharts(statdata,id,sportsname){
                         //     borderRadius: [4, 4, 0, 0]
                         // },
                         hr: {
-                            borderColor: '#aaa',
+                           borderColor: '#aaa',
                             width: '100%',
-                            borderWidth: 0.5,
+                        borderWidth: 0.5,
                             height: 0
                         },
                         b: {
@@ -765,13 +916,13 @@ function lpersoncharts(statdata,id,sportsname){
                 label: {
                     formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
                     backgroundColor: '#eee',
-                    borderColor: '#aaa',
-                    borderWidth: 1,
+                   borderColor: '#aaa',
+                borderWidth: 1,
                     borderRadius: 4,
-                    // shadowBlur:3,
+                    //borderWidth:3,
                     // shadowOffsetX: 2,
                     // shadowOffsetY: 2,
-                    // shadowColor: '#999',
+                    // borderColor: '#999',
                     // padding: [0, 7],
                     rich: {
                         a: {
@@ -787,9 +938,9 @@ function lpersoncharts(statdata,id,sportsname){
                         //     borderRadius: [4, 4, 0, 0]
                         // },
                         hr: {
-                            borderColor: '#aaa',
+                           borderColor: '#aaa',
                             width: '100%',
-                            borderWidth: 0.5,
+                        borderWidth: 0.5,
                             height: 0
                         },
                         b: {
@@ -805,6 +956,329 @@ function lpersoncharts(statdata,id,sportsname){
                     }
                 },
                 data: third
+            }
+        ]
+    };
+    return option
+}
+
+function detailstats(winnername,losername){
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                animation: false
+            },
+            formatter:function(params){
+                if(params[0].data.value==undefined){
+                    data=params[0].data
+                }
+                else{
+                    data=params[0].data.value
+                }
+                if(params[1].data.value==undefined){
+                    data1=params[1].data
+                }
+                else{
+                    data1=params[1].data.value
+                }
+                return params[0].name+'</br>'+params[0].marker+params[0].seriesName+':'+data+'</br>'+params[1].marker+params[1].seriesName+':'+data1
+            },
+        },
+        legend: {
+            data: [winnername, losername],
+            left: 10
+        },
+        axisPointer: {
+            link: {xAxisIndex: 'all'}
+        },
+        dataZoom: [
+            {
+                show: true,
+                realtime: true,
+                start: 0,
+                end: 40,
+                xAxisIndex: [0, 1]
+            },
+            {
+                type: 'inside',
+                realtime: true,
+                start: 0,
+                end: 40,
+                xAxisIndex: [0, 1]
+            }
+        ],
+        grid: [{
+            left: 50,
+            right: 50,
+            height: '35%'
+        }, {
+            left: 50,
+            right: 50,
+            top: '55%',
+            height: '35%'
+        }],
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                axisLine: {onZero: false},
+                data:['','第一局第一场','第一局第二场','第一局第三场','第一局第四场','第二局第一场','第二局第二场','第二局第三场','第二局第四场','第二局第五场','第二局第六场','第二局第七场','第二局第八场','第二局第九场','第二局第十场','第二局第十一场','第三局第一场','第三局第二场','第三局第三场','第三局第四场','第四局第一场','第四局第二场','第四局第三场','第四局第四场','第四局第五场','第四局第六场','第四局第七场','第五局第一场','第五局第二场','第五局第三场','第五局第四场','第六局第一场','第六局第二场','第六局第三场','第六局第四场','第六局第五场','第六局第六场','第六局第七场','第六局第八场','第六局第九场','第七局第一场','第七局第二场','第七局第三场','第七局第四场','第八局第一场','第八局第二场','第八局第三场','第八局第四场','第八局第五场','第八局第六场','第八局第七场','第九局第一场','第九局第二场','第九局第三场','第九局第四场','第十局第一场','第十局第二场','第十局第三场','第十局第四场','第十局第五场','第十局第六场','第十局第七场','第十局第八场','第十局第九场'],               
+                gridIndex:0
+            },
+            {
+                gridIndex: 1,
+                type: 'category',
+                boundaryGap: false,
+                axisLine: {onZero: false},
+                data: ['','第一局第一场','第一局第二场','第一局第三场','第一局第四场','第二局第一场','第二局第二场','第二局第三场','第二局第四场','第二局第五场','第二局第六场','第二局第七场','第二局第八场','第二局第九场','第二局第十场','第二局第十一场','第三局第一场','第三局第二场','第三局第三场','第三局第四场','第四局第一场','第四局第二场','第四局第三场','第四局第四场','第四局第五场','第四局第六场','第四局第七场','第五局第一场','第五局第二场','第五局第三场','第五局第四场','第六局第一场','第六局第二场','第六局第三场','第六局第四场','第六局第五场','第六局第六场','第六局第七场','第六局第八场','第六局第九场','第七局第一场','第七局第二场','第七局第三场','第七局第四场','第八局第一场','第八局第二场','第八局第三场','第八局第四场','第八局第五场','第八局第六场','第八局第七场','第九局第一场','第九局第二场','第九局第三场','第九局第四场','第十局第一场','第十局第二场','第十局第三场','第十局第四场','第十局第五场','第十局第六场','第十局第七场','第十局第八场','第十局第九场'],
+                position: 'top'
+            }
+        ],
+        yAxis: [
+            {
+                name: '比分',
+                type: 'category',
+                data:['0','15','30','40','A'],
+                axisLine:{
+                    show:true
+                }
+            },
+            {
+                gridIndex: 1,
+                name: '比分',
+                type: 'category',
+                data:['0','15','30','40','A'],
+                inverse: true,
+                axisLine:{
+                    show:true
+                }
+            }
+        ],
+        series: [
+            {
+                name: winnername,
+                type: 'line',
+                symbolSize: 8,
+                hoverAnimation: false,
+                data:[
+                    '0','15','30','30',{value:'40',symbol:'diamond',symbolSize:10},'0','0','15','15','30','40','40','40','40','40',{value:'A',symbol:'diamond',symbolSize:10},
+                    '15','30','30','40','15','15','15','30','30','40','40','15',{value:'30',symbol:'diamond',symbolSize:10},'40','40','0','0','0','15','30',{value:'40',symbolSize:10,symbol:'diamond'},'40','40','40',
+                    {value:'0',symbol:'diamond',symbolSize:10},'15','15',{value:'15',symbol:'diamond',symbolSize:10},'15','15',{value:'15',symbolSize:10,symbol:'diamond'},'30',{value:'40',symbolSize:10,symbol:'diamond'},
+                    '40','40','40','15','30','30','40','15','30','30','30',{value:'40',symbol:'diamond',symbolSize:10},'40','40','40',{value:'A',symbol:'diamond',symbolSize:10}
+                ],               
+                markPoint:{
+                    data:[
+                        {
+                            coord:['第一局第四场','40'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'Ace球'
+                            }                
+                        },
+                        {
+                            coord:['第二局第十一场','A'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'破发成功'
+                            }   
+                        },
+                        {
+                            coord:['第五局第二场','30'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'Ace球'
+                            } 
+                        },
+                        {
+                            coord:['第六局第六场','40'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'破发点'
+                            } 
+                        },
+                        {
+                            coord:['第七局第一场','0'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'双误'
+                            } 
+                        },
+                        {
+                            coord:['第七局第四场','15'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'被破发'
+                            } 
+                        },
+                        {
+                            coord:['第八局第三场','15'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'二发接发失误'
+                            } 
+                        },
+                        {
+                            coord:['第八局第五场','40'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'破发点'
+                            } 
+                        },
+                        {
+                            coord:['第十局第六场','40'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'破发点'
+                            } 
+                        },
+                        {
+                            coord:['第十局第九场','A'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'破发成功'
+                            } 
+                        },
+                    ]
+                },
+                markLine:{
+                    data:[
+                        {xAxis:'第一局第一场',symbol:['none','none']},
+                        {xAxis:'第二局第一场',symbol:['none','none']},
+                        {xAxis:'第三局第一场',symbol:['none','none']},
+                        {xAxis:'第四局第一场',symbol:['none','none']},
+                        {xAxis:'第五局第一场',symbol:['none','none']},
+                        {xAxis:'第六局第一场',symbol:['none','none']},
+                        {xAxis:'第七局第一场',symbol:['none','none']},
+                        {xAxis:'第八局第一场',symbol:['none','none']},
+                        {xAxis:'第九局第一场',symbol:['none','none']},
+                        {xAxis:'第十局第一场',symbol:['none','none']},
+                    ]
+                }
+            },
+            {
+                name: losername,
+                type: 'line',
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbolSize: 8,
+                hoverAnimation: false,
+                data:[
+                    '0','0','0','15','15','15',{value:'30',symbol:'diamond',symbolSize:10},'30','40','40','40','A','40','A','40',{value:'40',symbol:'diamond',symbolSize:10},
+                    '0','0','15','15',{value:'0',symbol:'diamond',symbolSize:10},'15','30','30','40','40','A','0','0','0','15',{value:'15',symbol:'diamond',symbolSize:10},
+                    {value:'30',symbol:'diamond',symbolSize:10},'40','40','40','40','A','40','A','15','15','30',{value:'40',symbol:'diamond',symbolSize:10},'0',{value:'15',symbol:'diamond',symbolSize:10},{value:'30',symbol:'diamond',symbolSize:10},
+                    '30','30','40','A','0','0','15','15','0','0','15',{value:'30',symbol:'diamond',symbolSize:10},'30','40','A','40',{value:'40',symbol:'diamond',symbolSize:10}
+                ],
+                markPoint:{
+                    data:[
+                        {
+                            coord:['第二局第二场','30'],
+                            value:'Ace球',
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'Ace球'
+                            }   
+                        },
+                        {
+                            coord:['第二局第十一场','40'],
+                            value:'被破发',
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'被破发'
+                            }   
+                        },
+                        {
+                            coord:['第四局第一场','0'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'双误'
+                            }   
+                        },
+                        {
+                            coord:['第六局第一场','15'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'Ace球'
+                            }   
+                        },
+                        {
+                            coord:['第六局第二场','30'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'Ace球'
+                            }   
+                        },
+                        {
+                            coord:['第七局第四场','40'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'破发成功'
+                            }   
+                        },
+                        {
+                            coord:['第八局第二场','15'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'Ace球'
+                            }   
+                        },
+                        {
+                            coord:['第八局第三场','30'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'Ace球'
+                            }   
+                        },
+                        {
+                            coord:['第十局第四场','30'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'Ace球'
+                            }   
+                        },
+                        {
+                            coord:['第十局第九场','40'],
+                            label:{
+                                show:true,
+                                position:'inside',
+                                formatter:'Ace球'
+                            }   
+                        },
+                    ]
+                },
+                markLine:{
+                    data:[
+                        {xAxis:'第一局第一场',symbol:'none'},
+                        {xAxis:'第二局第一场',symbol:['none','none']},
+                        {xAxis:'第三局第一场',symbol:['none','none']},
+                        {xAxis:'第四局第一场',symbol:['none','none']},
+                        {xAxis:'第五局第一场',symbol:['none','none']},
+                        {xAxis:'第六局第一场',symbol:['none','none']},
+                        {xAxis:'第七局第一场',symbol:['none','none']},
+                        {xAxis:'第八局第一场',symbol:['none','none']},
+                        {xAxis:'第九局第一场',symbol:['none','none']},
+                        {xAxis:'第十局第一场',symbol:['none','none']},
+                    ]
+                }
             }
         ]
     };
