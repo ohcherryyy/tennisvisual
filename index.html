@@ -30,7 +30,7 @@
         position: relative;
         width: 340px;
         background: #fff;
-        padding: 100px 40px 60px;
+        padding: 90px 30px 5px;
         box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
     }
     .container-fluid .box::before{
@@ -93,38 +93,51 @@
         <div class="box">
             <h3>澳大利亚网球公开赛</h3>
             <p>
-                2020年澳大利亚网球公开赛的冠军是来自塞尔维亚的德约科维奇2020年澳大利亚网球公开赛的冠军是来自塞尔维亚的德约科维奇2020年澳大利亚网球公开赛的冠军是来自塞尔维亚的德约科维奇
+                举办城市：澳大利亚墨尔本<br>
+                场地：室外硬地<br>
+                夺冠次数最多的选手：Novak Djokovic
             </p>
             <h4>
-                <button type="button" class="btn btn-outline-dark">点击查看</button>
+                <button type="button" class="btn btn-outline-light" onclick="jump(this)" id="ausopen">点击查看</button>
             </h4>            
         </div>
         <div class="box">
             <h3>法国网球公开赛</h3>
             <p>
-                2020年澳大利亚网球公开赛的冠军是来自塞尔维亚的德约科维奇
+                举办城市：法国巴黎<br>
+                场地：红土<br>
+                夺冠次数最多的选手：Rafael Nadal
             </p>
             <h4>
-                <button type="button" class="btn btn-outline-dark">点击查看</button>
+                <button type="button" class="btn btn-outline-light" onclick="jump(this)" id="france">点击查看</button>
             </h4>      
         </div>
         <div class="box">
             <h3>温布尔登网球公开赛</h3>
             <p>
-                2020年澳大利亚网球公开赛的冠军是来自塞尔维亚的德约科维奇
+                举办城市：英国伦敦<br>
+                场地：草地<br>
+                夺冠次数最多的选手：Roger Federer
             </p>
             <h4>
-                <button type="button" class="btn btn-outline-dark">点击查看</button>
+                <button type="button" class="btn btn-outline-light" onclick="jump(this)" id="wimbledon">点击查看</button>
             </h4>      
         </div>       
         <div class="box">
             <h3>美国网球公开赛</h3>
             <p>
-                2020年澳大利亚网球公开赛的冠军是来自塞尔维亚的德约科维奇
+                举办城市：美国纽约<br>
+                场地：室外硬地<br>
+                夺冠次数最多的选手：Roger Federer
             </p>
             <h4>
-                <button type="button" class="btn btn-outline-dark">点击查看</button>
+                <button type="button" class="btn btn-outline-light" onclick="jump(this)" id="ny">点击查看</button>
             </h4>      
         </div>    
     </div>
+    <script text="text/javascript">
+        function jump(link){
+            location.href="list.html?"+"txt="+encodeURI(link.id)
+        }
+    </script>
 </body>

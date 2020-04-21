@@ -4,25 +4,25 @@ from scrapy.selector import Selector
 from scrapy.http import HtmlResponse
 
 if __name__ == "__main__":
-    with DB(db='matchstat') as db:
-        db.execute("SELECT `winnername`,`losername`,`round`,`id` FROM `matchstat`.`ausopen` WHERE `year`='2020.01.20 - 2020.02.03' ")
-        result=db.fetchall()
-        sq="INSERT INTO `matchstat`.`2020ausopenlinks`(`source`,`target`,`value`,`id`) VALUES(%s,%s,%s,%s)"
-        for x in range(0,len(result)):
-            if(result[x][2]=="Final"):
-                db.execute(sq,(result[x][1],result[x][0],"决赛",result[x][3]))
-            if(result[x][2]=="Semifinals"):
-                db.execute(sq,(result[x][1],result[x][0],"半决赛",result[x][3]))
-            if(result[x][2]=="Quarterfinals"):
-                db.execute(sq,(result[x][1],result[x][0],"四分之一决赛",result[x][3]))
-            if(result[x][2]=="Round of 16"):
-                db.execute(sq,(result[x][1],result[x][0],"第四轮",result[x][3]))
-            if(result[x][2]=="Round of 32"):
-                db.execute(sq,(result[x][1],result[x][0],"第三轮",result[x][3]))
-            if(result[x][2]=="Round of 64"):
-                db.execute(sq,(result[x][1],result[x][0],"第二轮",result[x][3]))
-            if(result[x][2]=="Round of 128"):
-                db.execute(sq,(result[x][1],result[x][0],"第一轮",result[x][3]))
+    # with DB(db='matchstat') as db:
+    #     db.execute("SELECT `winnername`,`losername`,`round`,`id` FROM `matchstat`.`ausopen` WHERE `year`='2020.01.20 - 2020.02.03' ")
+    #     result=db.fetchall()
+    #     sq="INSERT INTO `matchstat`.`2020ausopenlinks`(`source`,`target`,`value`,`id`) VALUES(%s,%s,%s,%s)"
+    #     for x in range(0,len(result)):
+    #         if(result[x][2]=="Final"):
+    #             db.execute(sq,(result[x][1],result[x][0],"决赛",result[x][3]))
+    #         if(result[x][2]=="Semifinals"):
+    #             db.execute(sq,(result[x][1],result[x][0],"半决赛",result[x][3]))
+    #         if(result[x][2]=="Quarterfinals"):
+    #             db.execute(sq,(result[x][1],result[x][0],"四分之一决赛",result[x][3]))
+    #         if(result[x][2]=="Round of 16"):
+    #             db.execute(sq,(result[x][1],result[x][0],"第四轮",result[x][3]))
+    #         if(result[x][2]=="Round of 32"):
+    #             db.execute(sq,(result[x][1],result[x][0],"第三轮",result[x][3]))
+    #         if(result[x][2]=="Round of 64"):
+    #             db.execute(sq,(result[x][1],result[x][0],"第二轮",result[x][3]))
+    #         if(result[x][2]=="Round of 128"):
+    #             db.execute(sq,(result[x][1],result[x][0],"第一轮",result[x][3]))
 
     # with DB(db='matchstat') as db:
     #     db.execute("SELECT `winnername`,`round` FROM `matchstat`.`ausopen` WHERE `year`='2020.01.20 - 2020.02.03' ")
@@ -114,5 +114,3 @@ if __name__ == "__main__":
     #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"第二轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
     #         if(result[x][3]=="Round of 128"):
     #             db.execute(sq,(result[x][0],result[x][1],result[x][2],"第一轮","image://http://"+symbol[0][0],"image://http://"+losersymbol[0][0],result[x][4]))
-
-    

@@ -1063,9 +1063,9 @@ function detailstats(winnername,losername){
                 hoverAnimation: false,
                 data:[
                     '0','15','30','30',{value:'40',symbol:'diamond',symbolSize:10},'0','0','15','15','30','40','40','40','40','40',{value:'A',symbol:'diamond',symbolSize:10},
-                    '15','30','30','40','15','15','15','30','30','40','40','15',{value:'30',symbol:'diamond',symbolSize:10},'40','40','0','0','0','15','30',{value:'40',symbolSize:10,symbol:'diamond'},'40','40','40',
-                    {value:'0',symbol:'diamond',symbolSize:10},'15','15',{value:'15',symbol:'diamond',symbolSize:10},'15','15',{value:'15',symbolSize:10,symbol:'diamond'},'30',{value:'40',symbolSize:10,symbol:'diamond'},
-                    '40','40','40','15','30','30','40','15','30','30','30',{value:'40',symbol:'diamond',symbolSize:10},'40','40','40',{value:'A',symbol:'diamond',symbolSize:10}
+                    '15','30','30','40','15','15',{value:'15',symbol:'diamond',symbolSize:10},'30','30','40','40','15',{value:'30',symbol:'diamond',symbolSize:10},'40','40','0','0','0','15','30',{value:'40',symbolSize:10,symbol:'diamond'},'40','40','40',
+                    {value:'0',symbol:'diamond',symbolSize:10},'15','15',{value:'15',symbol:'diamond',symbolSize:10},'15','15',{value:'15'},'30',{value:'40',symbolSize:10,symbol:'diamond'},
+                    '40','40','15','30','30','40','15','30','30','30',{value:'40',symbol:'diamond',symbolSize:10},'40','40','40',{value:'A',symbol:'diamond',symbolSize:10}
                 ],               
                 markPoint:{
                     data:[
@@ -1118,7 +1118,7 @@ function detailstats(winnername,losername){
                             } 
                         },
                         {
-                            coord:['第八局第三场','15'],
+                            coord:['第四局第三场','15'],
                             label:{
                                 show:true,
                                 position:'inside',
@@ -1134,7 +1134,7 @@ function detailstats(winnername,losername){
                             } 
                         },
                         {
-                            coord:['第十局第六场','40'],
+                            coord:['第十局第五场','40'],
                             label:{
                                 show:true,
                                 position:'inside',
@@ -1260,7 +1260,7 @@ function detailstats(winnername,losername){
                             label:{
                                 show:true,
                                 position:'inside',
-                                formatter:'Ace球'
+                                formatter:'被破发'
                             }   
                         },
                     ]
