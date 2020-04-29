@@ -83,11 +83,14 @@ function getOption(nodes,links,categoriesname){
         link['source']=links[i][j].source;
         link['target']=links[i][j].target;
         link['value']=links[i][j].value;
+        link['match']=links[i][j].label
         link['id']=links[i][j].id;
         link['emphasis']={}
         link['emphasis']['label']={};
         link['emphasis']['label']['show']=true;
-        link['emphasis']['label']['formatter']='{@value}';
+        link['emphasis']['label']['formatter']=function (params){
+            return params.data.match;
+        };
         lin.push(link);
         }
         linkk.push(lin);
@@ -134,7 +137,7 @@ function getOption(nodes,links,categoriesname){
                 force:{
                     repulsion:500,
                     gravity:0.07,
-                    edgeLength:[20,400],
+                    edgeLength:[130,300],
                     layoutAnimation:true
                 },
                 lineStyle: {
@@ -153,7 +156,6 @@ function getOption(nodes,links,categoriesname){
                         },
                         lineStyle : {
                             width:5,
-                            
                         }
                     }
                 },
