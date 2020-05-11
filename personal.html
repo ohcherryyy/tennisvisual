@@ -342,11 +342,19 @@
     info=getinfo(sportsman,shownname)
     winstat(stat,shownname)
 
+    function ageyear(originage)
+    {
+        var mydate=new Date()
+        thisyear=mydate.getFullYear()
+        age=Number(thisyear-2020+originage)
+        return age
+    }
+
     document.getElementById('img').src="http://"+info['img']
     document.getElementById('name').innerText=shownname
     document.getElementById('nation').innerText="国籍："+info['nation']
     document.getElementById('rank').innerText="世界排名："+info['rank']
-    document.getElementById('age').innerText="年龄："+info['age']
+    document.getElementById('age').innerText="年龄："+ageyear(info['age'])
     document.getElementById('plays').innerText="正手常用手："+info['plays']
     document.getElementById('backhand').innerText="反手常用手："+info['backhand']
     document.getElementById('height').innerText="身高："+info['height']
@@ -381,7 +389,7 @@
             document.getElementById('name').innerText=shownname
             document.getElementById('nation').innerText="国籍："+info['nation']
             document.getElementById('rank').innerText="世界排名："+info['rank']
-            document.getElementById('age').innerText="年龄："+info['age']
+            document.getElementById('age').innerText="年龄："+ageyear(info['age'])
             document.getElementById('plays').innerText="正手常用手："+info['plays']
             document.getElementById('backhand').innerText="反手常用手："+info['backhand']
             document.getElementById('height').innerText="身高："+info['height']

@@ -74,7 +74,6 @@ function getOption(nodes,links,categoriesname){
     nodee.push(nod);
     };
 
-
    
     for(var i=0;i<links.length;i++){
         var lin=[];
@@ -95,7 +94,6 @@ function getOption(nodes,links,categoriesname){
         }
         linkk.push(lin);
     }
-
 
     option = {
         baseOption:{
@@ -137,7 +135,7 @@ function getOption(nodes,links,categoriesname){
                 force:{
                     repulsion:500,
                     gravity:0.07,
-                    edgeLength:[130,300],
+                    edgeLength:[200,300],
                     layoutAnimation:true
                 },
                 lineStyle: {

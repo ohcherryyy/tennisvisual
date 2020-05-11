@@ -509,9 +509,6 @@ function breakpointscreate(statdata,id,winnername,losername){
                     fontSize:15,
                     backgroundColor:'rgba(255,255,255,0.5)'
                 },
-                emphasis:{
-                    
-                }
             }
         ]
     };
@@ -540,7 +537,7 @@ function breakpointrcreate(statdata,id,winnername,losername){
                 }
                 else if(Number(statdata[i].wstat)<Number(statdata[i].lstat)){
                     winner['value']=Number(statdata[i].wstat)
-                    loser['selected']=true
+                    // loser['selected']=true
                     loser['value']=Number(statdata[i].lstat)
                     winnedata.push(winner)
                     winnedata.push(100-Number(statdata[i].wstat))
@@ -599,9 +596,6 @@ function breakpointrcreate(statdata,id,winnername,losername){
                     fontSize:15,
                     backgroundColor:'rgba(255,255,255,0.5)'
                 },
-                emphasis:{
-                    
-                }
             }
         ]
     };
@@ -737,7 +731,7 @@ function wpersoncharts(statdata,id,sportsname){
                 type: 'pie',
                 radius: ['65%', '80%'],
                 label: {
-                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：{c}}  {per|{d}%}  ',
                     backgroundColor: '#eee',
                    borderColor: '#aaa',
                 borderWidth: 1,

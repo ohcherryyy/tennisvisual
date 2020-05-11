@@ -673,7 +673,7 @@ function winstat(data,name){
         var temp=0
         for(var j=0;j<data[i].length;j++){
                 if(data[i][j].source==name){
-                    result[i]=data[i][j].value
+                    result[i]=data[i][j].label
                     break
                 }
                 else{
@@ -730,11 +730,6 @@ function winstat(data,name){
         },
         legend: {
             data:['最佳成绩', '胜利场数']
-        },
-        dataZoom: {
-            show: false,
-            start: 0,
-            end: 100
         },
         xAxis: [
             {
