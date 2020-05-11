@@ -85,21 +85,21 @@ function creategraph(statdata,id,winnername,losername){
         radar:[
         {
             indicator:[
-                {text:'Ace球'},
-                {text:'一发成功率(%)',max:100},
-                {text:'一发得分率(%)',max:100},
-                {text:'二发得分率(%)',max:100},
-                {text:'破发成功率(%)',max:100},
+                {text:'Ace球',color:'#808080'},
+                {text:'一发成功率(%)',max:100,color:'#808080'},
+                {text:'一发得分率(%)',max:100,color:'#808080'},
+                {text:'二发得分率(%)',max:100,color:'#808080'},
+                {text:'破发成功率(%)',max:100,color:'#808080'},
             ],
             center:['25%','50%'],
-            radius:80
+            radius:80,
         },
         {
             indicator:[
-                {text:'双发失误次数'},
-                {text:'被破发率(%)',max:100},
-                {text:'一发接发球失误率(%)',max:100},
-                {text:'二发接发球失误率(%)',max:100},
+                {text:'双发失误次数',color:'#808080'},
+                {text:'被破发率(%)',max:100,color:'#808080'},
+                {text:'一发接发球失误率(%)',max:100,color:'#808080'},
+                {text:'二发接发球失误率(%)',max:100,color:'#808080'},
                 
             ],
             center:['75%','50%'],
